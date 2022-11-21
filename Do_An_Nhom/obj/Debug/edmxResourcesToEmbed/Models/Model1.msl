@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QL_THUEXEModelStoreContainer" CdmEntityContainer="QL_THUEXEEntities">
+    <EntitySetMapping Name="LoaiNguoiDungs">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.LoaiNguoiDung">
+        <MappingFragment StoreEntitySet="LoaiNguoiDung">
+          <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+          <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDongXes">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblDongXe">
+        <MappingFragment StoreEntitySet="tblDongXe">
+          <ScalarProperty Name="DongXe" ColumnName="DongXe" />
+          <ScalarProperty Name="HangXe" ColumnName="HangXe" />
+          <ScalarProperty Name="SoChoNgoi" ColumnName="SoChoNgoi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblGiaoDiches">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblGiaoDich">
+        <MappingFragment StoreEntitySet="tblGiaoDich">
+          <ScalarProperty Name="MaGD" ColumnName="MaGD" />
+          <ScalarProperty Name="MaHopDong" ColumnName="MaHopDong" />
+          <ScalarProperty Name="MaPayment" ColumnName="MaPayment" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblHopDongs">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblHopDong">
+        <MappingFragment StoreEntitySet="tblHopDong">
+          <ScalarProperty Name="MaHopDong" ColumnName="MaHopDong" />
+          <ScalarProperty Name="MaXe" ColumnName="MaXe" />
+          <ScalarProperty Name="NgayNhanXe" ColumnName="NgayNhanXe" />
+          <ScalarProperty Name="NgayTraXe" ColumnName="NgayTraXe" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="TienDatCoc" ColumnName="TienDatCoc" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblHuys">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblHuy">
+        <MappingFragment StoreEntitySet="tblHuy">
+          <ScalarProperty Name="MaHuy" ColumnName="MaHuy" />
+          <ScalarProperty Name="MaHopDong" ColumnName="MaHopDong" />
+          <ScalarProperty Name="LyDoHuy" ColumnName="LyDoHuy" />
+          <ScalarProperty Name="ThoiGianHuy" ColumnName="ThoiGianHuy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLoaiDichVus">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblLoaiDichVu">
+        <MappingFragment StoreEntitySet="tblLoaiDichVu">
+          <ScalarProperty Name="MaLoaiDV" ColumnName="MaLoaiDV" />
+          <ScalarProperty Name="TenLoaiDV" ColumnName="TenLoaiDV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMucPhis">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblMucPhi">
+        <MappingFragment StoreEntitySet="tblMucPhi">
+          <ScalarProperty Name="MaMP" ColumnName="MaMP" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPayments">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblPayment">
+        <MappingFragment StoreEntitySet="tblPayment">
+          <ScalarProperty Name="MaPayment" ColumnName="MaPayment" />
+          <ScalarProperty Name="ThongTin" ColumnName="ThongTin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Name_login" ColumnName="Name_login" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+          <ScalarProperty Name="Date_signup" ColumnName="Date_signup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblXes">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblXe">
+        <MappingFragment StoreEntitySet="tblXe">
+          <ScalarProperty Name="MaXe" ColumnName="MaXe" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="MaMP" ColumnName="MaMP" />
+          <ScalarProperty Name="DongXe" ColumnName="DongXe" />
+          <ScalarProperty Name="MaLoaiDV" ColumnName="MaLoaiDV" />
+          <ScalarProperty Name="AnhXe" ColumnName="AnhXe" />
+          <ScalarProperty Name="NgayDK" ColumnName="NgayDK" />
+          <ScalarProperty Name="LuotXem" ColumnName="LuotXem" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="LuotThue" ColumnName="LuotThue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

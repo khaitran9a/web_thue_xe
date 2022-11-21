@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QL_THUEXEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LoaiNguoiDung">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="Int32" Nullable="false" />
+    <Property Name="TenLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblUsers" Relationship="Self.FK_tblUser_LoaiNguoiDung" FromRole="LoaiNguoiDung" ToRole="tblUser" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblDongXe">
+    <Key>
+      <PropertyRef Name="DongXe" />
+    </Key>
+    <Property Name="DongXe" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="HangXe" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="SoChoNgoi" Type="Int32" />
+    <NavigationProperty Name="tblXes" Relationship="Self.FK_tblXe_tblDongXe" FromRole="tblDongXe" ToRole="tblXe" />
+  </EntityType>
+  <EntityType Name="tblGiaoDich">
+    <Key>
+      <PropertyRef Name="MaGD" />
+    </Key>
+    <Property Name="MaGD" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaHopDong" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MaPayment" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblHopDong" Relationship="Self.FK_Table_1_tblHopDong" FromRole="tblGiaoDich" ToRole="tblHopDong" />
+    <NavigationProperty Name="tblPayment" Relationship="Self.FK_Table_1_tblPayment" FromRole="tblGiaoDich" ToRole="tblPayment" />
+  </EntityType>
+  <EntityType Name="tblHopDong">
+    <Key>
+      <PropertyRef Name="MaHopDong" />
+    </Key>
+    <Property Name="MaHopDong" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaXe" Type="Int32" />
+    <Property Name="NgayNhanXe" Type="DateTime" Precision="3" />
+    <Property Name="NgayTraXe" Type="DateTime" Precision="0" />
+    <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TienDatCoc" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="User_id" Type="Int32" />
+    <NavigationProperty Name="tblGiaoDiches" Relationship="Self.FK_Table_1_tblHopDong" FromRole="tblHopDong" ToRole="tblGiaoDich" />
+    <NavigationProperty Name="tblUser" Relationship="Self.FK_tblHopDong_tblUser" FromRole="tblHopDong" ToRole="tblUser" />
+    <NavigationProperty Name="tblXe" Relationship="Self.FK_tblHopDong_tblXe" FromRole="tblHopDong" ToRole="tblXe" />
+    <NavigationProperty Name="tblHuys" Relationship="Self.FK_tblHuy_tblHopDong" FromRole="tblHopDong" ToRole="tblHuy" />
+  </EntityType>
+  <EntityType Name="tblHuy">
+    <Key>
+      <PropertyRef Name="MaHuy" />
+    </Key>
+    <Property Name="MaHuy" Type="Int32" Nullable="false" />
+    <Property Name="MaHopDong" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="LyDoHuy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGianHuy" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tblHopDong" Relationship="Self.FK_tblHuy_tblHopDong" FromRole="tblHuy" ToRole="tblHopDong" />
+  </EntityType>
+  <EntityType Name="tblLoaiDichVu">
+    <Key>
+      <PropertyRef Name="MaLoaiDV" />
+    </Key>
+    <Property Name="MaLoaiDV" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TenLoaiDV" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblXes" Relationship="Self.FK_tblXe_tblLoaiDichVu" FromRole="tblLoaiDichVu" ToRole="tblXe" />
+  </EntityType>
+  <EntityType Name="tblMucPhi">
+    <Key>
+      <PropertyRef Name="MaMP" />
+    </Key>
+    <Property Name="MaMP" Type="Int32" Nullable="false" />
+    <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblXes" Relationship="Self.FK_tblXe_tblMucPhi" FromRole="tblMucPhi" ToRole="tblXe" />
+  </EntityType>
+  <EntityType Name="tblPayment">
+    <Key>
+      <PropertyRef Name="MaPayment" />
+    </Key>
+    <Property Name="MaPayment" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ThongTin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblGiaoDiches" Relationship="Self.FK_Table_1_tblPayment" FromRole="tblPayment" ToRole="tblGiaoDich" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="User_id" />
+    </Key>
+    <Property Name="User_id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name_login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="MaLoai" Type="Int32" />
+    <Property Name="Date_signup" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="LoaiNguoiDung" Relationship="Self.FK_tblUser_LoaiNguoiDung" FromRole="tblUser" ToRole="LoaiNguoiDung" />
+    <NavigationProperty Name="tblHopDongs" Relationship="Self.FK_tblHopDong_tblUser" FromRole="tblUser" ToRole="tblHopDong" />
+    <NavigationProperty Name="tblXes" Relationship="Self.FK_tblXe_tblUser" FromRole="tblUser" ToRole="tblXe" />
+  </EntityType>
+  <EntityType Name="tblXe">
+    <Key>
+      <PropertyRef Name="MaXe" />
+    </Key>
+    <Property Name="MaXe" Type="Int32" Nullable="false" />
+    <Property Name="User_id" Type="Int32" />
+    <Property Name="MaMP" Type="Int32" />
+    <Property Name="DongXe" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="MaLoaiDV" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="AnhXe" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="NgayDK" Type="DateTime" Precision="0" />
+    <Property Name="LuotXem" Type="Int32" />
+    <Property Name="Rate" Type="Int32" />
+    <Property Name="LuotThue" Type="Int32" />
+    <NavigationProperty Name="tblDongXe" Relationship="Self.FK_tblXe_tblDongXe" FromRole="tblXe" ToRole="tblDongXe" />
+    <NavigationProperty Name="tblHopDongs" Relationship="Self.FK_tblHopDong_tblXe" FromRole="tblXe" ToRole="tblHopDong" />
+    <NavigationProperty Name="tblLoaiDichVu" Relationship="Self.FK_tblXe_tblLoaiDichVu" FromRole="tblXe" ToRole="tblLoaiDichVu" />
+    <NavigationProperty Name="tblMucPhi" Relationship="Self.FK_tblXe_tblMucPhi" FromRole="tblXe" ToRole="tblMucPhi" />
+    <NavigationProperty Name="tblUser" Relationship="Self.FK_tblXe_tblUser" FromRole="tblXe" ToRole="tblUser" />
+  </EntityType>
+  <Association Name="FK_tblUser_LoaiNguoiDung">
+    <End Role="LoaiNguoiDung" Type="Self.LoaiNguoiDung" Multiplicity="0..1" />
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiNguoiDung">
+        <PropertyRef Name="MaLoai" />
+      </Principal>
+      <Dependent Role="tblUser">
+        <PropertyRef Name="MaLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblXe_tblDongXe">
+    <End Role="tblDongXe" Type="Self.tblDongXe" Multiplicity="0..1" />
+    <End Role="tblXe" Type="Self.tblXe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDongXe">
+        <PropertyRef Name="DongXe" />
+      </Principal>
+      <Dependent Role="tblXe">
+        <PropertyRef Name="DongXe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_1_tblHopDong">
+    <End Role="tblHopDong" Type="Self.tblHopDong" Multiplicity="0..1" />
+    <End Role="tblGiaoDich" Type="Self.tblGiaoDich" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblHopDong">
+        <PropertyRef Name="MaHopDong" />
+      </Principal>
+      <Dependent Role="tblGiaoDich">
+        <PropertyRef Name="MaHopDong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_1_tblPayment">
+    <End Role="tblPayment" Type="Self.tblPayment" Multiplicity="0..1" />
+    <End Role="tblGiaoDich" Type="Self.tblGiaoDich" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPayment">
+        <PropertyRef Name="MaPayment" />
+      </Principal>
+      <Dependent Role="tblGiaoDich">
+        <PropertyRef Name="MaPayment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblHopDong_tblUser">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+    <End Role="tblHopDong" Type="Self.tblHopDong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="tblHopDong">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblHopDong_tblXe">
+    <End Role="tblXe" Type="Self.tblXe" Multiplicity="0..1" />
+    <End Role="tblHopDong" Type="Self.tblHopDong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblXe">
+        <PropertyRef Name="MaXe" />
+      </Principal>
+      <Dependent Role="tblHopDong">
+        <PropertyRef Name="MaXe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblHuy_tblHopDong">
+    <End Role="tblHopDong" Type="Self.tblHopDong" Multiplicity="0..1" />
+    <End Role="tblHuy" Type="Self.tblHuy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblHopDong">
+        <PropertyRef Name="MaHopDong" />
+      </Principal>
+      <Dependent Role="tblHuy">
+        <PropertyRef Name="MaHopDong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblXe_tblLoaiDichVu">
+    <End Role="tblLoaiDichVu" Type="Self.tblLoaiDichVu" Multiplicity="0..1" />
+    <End Role="tblXe" Type="Self.tblXe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblLoaiDichVu">
+        <PropertyRef Name="MaLoaiDV" />
+      </Principal>
+      <Dependent Role="tblXe">
+        <PropertyRef Name="MaLoaiDV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblXe_tblMucPhi">
+    <End Role="tblMucPhi" Type="Self.tblMucPhi" Multiplicity="0..1" />
+    <End Role="tblXe" Type="Self.tblXe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMucPhi">
+        <PropertyRef Name="MaMP" />
+      </Principal>
+      <Dependent Role="tblXe">
+        <PropertyRef Name="MaMP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblXe_tblUser">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+    <End Role="tblXe" Type="Self.tblXe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="tblXe">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QL_THUEXEEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LoaiNguoiDungs" EntityType="Self.LoaiNguoiDung" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="tblDongXes" EntityType="Self.tblDongXe" />
+    <EntitySet Name="tblGiaoDiches" EntityType="Self.tblGiaoDich" />
+    <EntitySet Name="tblHopDongs" EntityType="Self.tblHopDong" />
+    <EntitySet Name="tblHuys" EntityType="Self.tblHuy" />
+    <EntitySet Name="tblLoaiDichVus" EntityType="Self.tblLoaiDichVu" />
+    <EntitySet Name="tblMucPhis" EntityType="Self.tblMucPhi" />
+    <EntitySet Name="tblPayments" EntityType="Self.tblPayment" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+    <EntitySet Name="tblXes" EntityType="Self.tblXe" />
+    <AssociationSet Name="FK_tblUser_LoaiNguoiDung" Association="Self.FK_tblUser_LoaiNguoiDung">
+      <End Role="LoaiNguoiDung" EntitySet="LoaiNguoiDungs" />
+      <End Role="tblUser" EntitySet="tblUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblXe_tblDongXe" Association="Self.FK_tblXe_tblDongXe">
+      <End Role="tblDongXe" EntitySet="tblDongXes" />
+      <End Role="tblXe" EntitySet="tblXes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_1_tblHopDong" Association="Self.FK_Table_1_tblHopDong">
+      <End Role="tblHopDong" EntitySet="tblHopDongs" />
+      <End Role="tblGiaoDich" EntitySet="tblGiaoDiches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_1_tblPayment" Association="Self.FK_Table_1_tblPayment">
+      <End Role="tblPayment" EntitySet="tblPayments" />
+      <End Role="tblGiaoDich" EntitySet="tblGiaoDiches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblHopDong_tblUser" Association="Self.FK_tblHopDong_tblUser">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="tblHopDong" EntitySet="tblHopDongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblHopDong_tblXe" Association="Self.FK_tblHopDong_tblXe">
+      <End Role="tblXe" EntitySet="tblXes" />
+      <End Role="tblHopDong" EntitySet="tblHopDongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblHuy_tblHopDong" Association="Self.FK_tblHuy_tblHopDong">
+      <End Role="tblHopDong" EntitySet="tblHopDongs" />
+      <End Role="tblHuy" EntitySet="tblHuys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblXe_tblLoaiDichVu" Association="Self.FK_tblXe_tblLoaiDichVu">
+      <End Role="tblLoaiDichVu" EntitySet="tblLoaiDichVus" />
+      <End Role="tblXe" EntitySet="tblXes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblXe_tblMucPhi" Association="Self.FK_tblXe_tblMucPhi">
+      <End Role="tblMucPhi" EntitySet="tblMucPhis" />
+      <End Role="tblXe" EntitySet="tblXes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblXe_tblUser" Association="Self.FK_tblXe_tblUser">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="tblXe" EntitySet="tblXes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

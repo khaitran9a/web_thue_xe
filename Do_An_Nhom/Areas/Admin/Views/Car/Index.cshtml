@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Do_An_Nhom.Models.tblXe>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AnhXe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LuotXem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LuotThue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblDongXe.HangXe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblLoaiDichVu.TenLoaiDV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblMucPhi.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblUser.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnhXe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDK)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LuotXem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LuotThue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblDongXe.HangXe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblLoaiDichVu.TenLoaiDV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblMucPhi.MoTa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblUser.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaXe }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaXe }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaXe })
+        </td>
+    </tr>
+}
+
+</table>

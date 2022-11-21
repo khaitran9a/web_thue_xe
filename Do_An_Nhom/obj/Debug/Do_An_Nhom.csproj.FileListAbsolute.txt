@@ -77,3 +77,7 @@ D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\obj\Debug\Do_An_Nhom.csproj.CoreCompi
 D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\obj\Debug\Do_An_Nhom.csproj.CopyComplete
 D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\obj\Debug\Do_An_Nhom.dll
 D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\obj\Debug\Do_An_Nhom.pdb
+D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\bin\EntityFramework.dll
+D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\bin\EntityFramework.SqlServer.dll
+D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\bin\EntityFramework.xml
+D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\bin\EntityFramework.SqlServer.xml
