@@ -20,11 +20,12 @@
   </EntityType>
   <EntityType Name="tblDongXe">
     <Key>
-      <PropertyRef Name="DongXe" />
+      <PropertyRef Name="MaDongXe" />
     </Key>
     <Property Name="DongXe" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="HangXe" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="SoChoNgoi" Type="Int32" />
+    <Property Name="MaDongXe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="tblXes" Relationship="Self.FK_tblXe_tblDongXe" FromRole="tblDongXe" ToRole="tblXe" />
   </EntityType>
   <EntityType Name="tblGiaoDich">
@@ -68,15 +69,24 @@
     <Key>
       <PropertyRef Name="MaLoaiDV" />
     </Key>
-    <Property Name="MaLoaiDV" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MaLoaiDV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenLoaiDV" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tblXes" Relationship="Self.FK_tblXe_tblLoaiDichVu" FromRole="tblLoaiDichVu" ToRole="tblXe" />
+  </EntityType>
+  <EntityType Name="tblMenu">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
   </EntityType>
   <EntityType Name="tblMucPhi">
     <Key>
       <PropertyRef Name="MaMP" />
     </Key>
-    <Property Name="MaMP" Type="Int32" Nullable="false" />
+    <Property Name="MaMP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tblXes" Relationship="Self.FK_tblXe_tblMucPhi" FromRole="tblMucPhi" ToRole="tblXe" />
@@ -93,7 +103,7 @@
     <Key>
       <PropertyRef Name="User_id" />
     </Key>
-    <Property Name="User_id" Type="Int32" Nullable="false" />
+    <Property Name="User_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Name_login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
@@ -103,6 +113,7 @@
     <Property Name="Birthday" Type="DateTime" Precision="0" />
     <Property Name="MaLoai" Type="Int32" />
     <Property Name="Date_signup" Type="DateTime" Precision="3" />
+    <Property Name="IsAdmin" Type="Boolean" />
     <NavigationProperty Name="LoaiNguoiDung" Relationship="Self.FK_tblUser_LoaiNguoiDung" FromRole="tblUser" ToRole="LoaiNguoiDung" />
     <NavigationProperty Name="tblHopDongs" Relationship="Self.FK_tblHopDong_tblUser" FromRole="tblUser" ToRole="tblHopDong" />
     <NavigationProperty Name="tblXes" Relationship="Self.FK_tblXe_tblUser" FromRole="tblUser" ToRole="tblXe" />
@@ -111,11 +122,11 @@
     <Key>
       <PropertyRef Name="MaXe" />
     </Key>
-    <Property Name="MaXe" Type="Int32" Nullable="false" />
+    <Property Name="MaXe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="User_id" Type="Int32" />
     <Property Name="MaMP" Type="Int32" />
-    <Property Name="DongXe" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
-    <Property Name="MaLoaiDV" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="MaDongXe" Type="Int32" />
+    <Property Name="MaLoaiDV" Type="Int32" />
     <Property Name="AnhXe" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="NgayDK" Type="DateTime" Precision="0" />
     <Property Name="LuotXem" Type="Int32" />
@@ -144,10 +155,10 @@
     <End Role="tblXe" Type="Self.tblXe" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tblDongXe">
-        <PropertyRef Name="DongXe" />
+        <PropertyRef Name="MaDongXe" />
       </Principal>
       <Dependent Role="tblXe">
-        <PropertyRef Name="DongXe" />
+        <PropertyRef Name="MaDongXe" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -255,6 +266,7 @@
     <EntitySet Name="tblHopDongs" EntityType="Self.tblHopDong" />
     <EntitySet Name="tblHuys" EntityType="Self.tblHuy" />
     <EntitySet Name="tblLoaiDichVus" EntityType="Self.tblLoaiDichVu" />
+    <EntitySet Name="tblMenus" EntityType="Self.tblMenu" />
     <EntitySet Name="tblMucPhis" EntityType="Self.tblMucPhi" />
     <EntitySet Name="tblPayments" EntityType="Self.tblPayment" />
     <EntitySet Name="tblUsers" EntityType="Self.tblUser" />

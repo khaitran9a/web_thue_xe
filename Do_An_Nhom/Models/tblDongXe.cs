@@ -23,6 +23,7 @@ namespace Do_An_Nhom.Models
         public string DongXe { get; set; }
         public string HangXe { get; set; }
         public Nullable<int> SoChoNgoi { get; set; }
+        public int MaDongXe { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblXe> tblXes { get; set; }

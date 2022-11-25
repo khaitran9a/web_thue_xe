@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Do_An_Nhom.Models.tblLoaiDichVu>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Quản lý Mức phí</h1>
+            </div><!-- /.col -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                @Html.ActionLink("Create New", "Create", new { @class = "btn btn-primary" })
+            </div><!-- /.col -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<style>
+    table, tr, td, th {
+        border: 1px solid #333;
+        border-collapse: collapse;
+    }
+</style>
+<table class="table col-md-10 m-auto">
+    <tr>
+        <th class="col-md-3 text-center">
+            @Html.DisplayNameFor(model => model.MaLoaiDV)
+        </th>
+
+        <th class="col-md-5 text-center">
+            @Html.DisplayNameFor(model => model.TenLoaiDV)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaLoaiDV)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TenLoaiDV)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaLoaiDV }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaLoaiDV }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaLoaiDV })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

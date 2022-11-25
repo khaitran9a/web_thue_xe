@@ -26,6 +26,7 @@
           <ScalarProperty Name="DongXe" ColumnName="DongXe" />
           <ScalarProperty Name="HangXe" ColumnName="HangXe" />
           <ScalarProperty Name="SoChoNgoi" ColumnName="SoChoNgoi" />
+          <ScalarProperty Name="MaDongXe" ColumnName="MaDongXe" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -70,6 +71,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblMenus">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblMenu">
+        <MappingFragment StoreEntitySet="tblMenu">
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblMucPhis">
       <EntityTypeMapping TypeName="QL_THUEXEModel.tblMucPhi">
         <MappingFragment StoreEntitySet="tblMucPhi">
@@ -100,6 +111,7 @@
           <ScalarProperty Name="Birthday" ColumnName="Birthday" />
           <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
           <ScalarProperty Name="Date_signup" ColumnName="Date_signup" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -109,7 +121,7 @@
           <ScalarProperty Name="MaXe" ColumnName="MaXe" />
           <ScalarProperty Name="User_id" ColumnName="User_id" />
           <ScalarProperty Name="MaMP" ColumnName="MaMP" />
-          <ScalarProperty Name="DongXe" ColumnName="DongXe" />
+          <ScalarProperty Name="MaDongXe" ColumnName="MaDongXe" />
           <ScalarProperty Name="MaLoaiDV" ColumnName="MaLoaiDV" />
           <ScalarProperty Name="AnhXe" ColumnName="AnhXe" />
           <ScalarProperty Name="NgayDK" ColumnName="NgayDK" />

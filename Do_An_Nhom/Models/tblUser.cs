@@ -31,6 +31,7 @@ namespace Do_An_Nhom.Models
         public Nullable<System.DateTime> Birthday { get; set; }
         public Nullable<int> MaLoai { get; set; }
         public Nullable<System.DateTime> Date_signup { get; set; }
+        public Nullable<bool> IsAdmin { get; set; }
     
         public virtual LoaiNguoiDung LoaiNguoiDung { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

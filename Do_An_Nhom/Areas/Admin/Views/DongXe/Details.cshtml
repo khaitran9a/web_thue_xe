@@ -1,0 +1,55 @@
+﻿@model Do_An_Nhom.Models.tblDongXe
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Chi tiết dòng xe</h1>
+            </div><!-- /.col -->
+
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<div class="dl-horizontal col-md-10 m-auto">
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DongXe)
+        </dt>
+
+        <dd class="pl-5">
+            @Html.DisplayFor(model => model.DongXe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HangXe)
+        </dt>
+
+        <dd class="pl-5">
+            @Html.DisplayFor(model => model.HangXe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoChoNgoi)
+        </dt>
+
+        <dd class="pl-5">
+            @Html.DisplayFor(model => model.SoChoNgoi)
+        </dd>
+        <div class="col-md-offset-2">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.MaDongXe }, new { @class = "btn btn-info m-r" })
+        </div>
+    </dl>
+</div>
+<div class="form-group d-flex col-md-10">
+    <div class="m-r col-md-2">
+
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</div>

@@ -1,29 +1,24 @@
-﻿@model Do_An_Nhom.Models.tblMucPhi
+﻿@model Do_An_Nhom.Models.tblLoaiDichVu
 
 @{
     ViewBag.Title = "Delete";
 }
 
 
+
+
 <div>
     <hr />
     <dl class="dl-horizontal  col-md-10 m-auto" ">
-        <h3  class="text-red">Bạn có chắc chăn muốn xóa mức phí này không?</h3>
+        <h3 class="text-red">Bạn có chắc chăn muốn xóa loại dịch vụ này không?</h3>
         <dt>
-            @Html.DisplayNameFor(model => model.DonGia)
+            @Html.DisplayNameFor(model => model.TenLoaiDV)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DonGia)
+            @Html.DisplayFor(model => model.TenLoaiDV)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MoTa)
-        </dd>
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
@@ -34,7 +29,8 @@
             </div>
         }
 
+
     </dl>
 
-  
+
 </div>

@@ -19,22 +19,27 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                @Html.ActionLink("Create New", "Create", new { @class = "btn" } )
+                @Html.ActionLink("Create New", "Create", new { @class = "btn btn-primary" } )
             </div><!-- /.col -->
 
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
-
-    <table class="table ">
+    <style>
+        table, tr, td, th {
+            border: 1px solid #333;
+            border-collapse: collapse;
+        }
+    </style>
+    <table class="table col-md-10 m-auto">
         <tr>
-            <th>
+            <th class="col-md-4 text-center">
                 @Html.DisplayNameFor(model => model.DonGia)
             </th>
-            <th>
+            <th class="col-md-5 text-center">
                 @Html.DisplayNameFor(model => model.MoTa)
             </th>
-            <th></th>
+            <th class="col-md-3 text-center"></th>
         </tr>
 
         @foreach (var item in Model)

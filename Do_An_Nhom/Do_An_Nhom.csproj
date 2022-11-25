@@ -131,12 +131,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CarController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DongXeController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoaiDichVuController.cs" />
     <Compile Include="Areas\Admin\Controllers\MucPhiController.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\FleetController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
+    <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -174,6 +178,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblLoaiDichVu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblMenu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblMucPhi.cs">
@@ -2308,6 +2315,21 @@
     <Content Include="Content\css\alt\adminlte.pages.min.css.map" />
     <Content Include="Content\css\alt\adminlte.plugins.css.map" />
     <Content Include="Content\css\alt\adminlte.plugins.min.css.map" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Car\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\MucPhi\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\MucPhi\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\MucPhi\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\MucPhi\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\MucPhi\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DongXe\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DongXe\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DongXe\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\DongXe\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DongXe\Index.cshtml" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -2315,16 +2337,11 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Car\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\MucPhi\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\MucPhi\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\MucPhi\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\MucPhi\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\MucPhi\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiDichVu\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiDichVu\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiDichVu\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiDichVu\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiDichVu\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2383,6 +2400,12 @@
     <Content Include="Scripts\js\adminlte.js.map" />
     <Content Include="Scripts\js\adminlte.min.js.map" />
     <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\AboutUs\Index.cshtml" />
+    <Content Include="Views\SignUp\Delete.cshtml" />
+    <Content Include="Views\SignUp\Details.cshtml" />
+    <Content Include="Views\SignUp\Edit.cshtml" />
+    <Content Include="Views\SignUp\Index.cshtml" />
+    <Content Include="Views\SignUp\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

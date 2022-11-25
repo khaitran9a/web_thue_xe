@@ -4,12 +4,18 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Chi tiết mức phí</h1>
+            </div><!-- /.col -->
 
-<div>
-    <h4>tblMucPhi</h4>
-    <hr />
-    <dl class="dl-horizontal">
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<div class="dl-horizontal col-md-10 m-auto">
+    <dl class="">
         <dt>
             @Html.DisplayNameFor(model => model.DonGia)
         </dt>
@@ -26,9 +32,22 @@
             @Html.DisplayFor(model => model.MoTa)
         </dd>
 
+        <div class="col-md-offset-2">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.MaMP }, new { @class = "btn btn-info m-r" })
+        </div>
+
     </dl>
+
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaMP }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="form-group d-flex col-md-10">
+    <div class="m-r col-md-2">
+
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+ 
+</div>
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MaMP }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

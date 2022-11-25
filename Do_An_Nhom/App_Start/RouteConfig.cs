@@ -16,7 +16,8 @@ namespace Do_An_Nhom
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new[] { "Do_An_Nhom.Controllers" }
             );
         }
     }

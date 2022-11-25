@@ -23,8 +23,8 @@ namespace Do_An_Nhom.Models
         public int MaXe { get; set; }
         public Nullable<int> User_id { get; set; }
         public Nullable<int> MaMP { get; set; }
-        public string DongXe { get; set; }
-        public string MaLoaiDV { get; set; }
+        public Nullable<int> MaDongXe { get; set; }
+        public Nullable<int> MaLoaiDV { get; set; }
         public byte[] AnhXe { get; set; }
         public Nullable<System.DateTime> NgayDK { get; set; }
         public Nullable<int> LuotXem { get; set; }

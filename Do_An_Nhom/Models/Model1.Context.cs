@@ -32,6 +32,7 @@ namespace Do_An_Nhom.Models
         public virtual DbSet<tblHopDong> tblHopDongs { get; set; }
         public virtual DbSet<tblHuy> tblHuys { get; set; }
         public virtual DbSet<tblLoaiDichVu> tblLoaiDichVus { get; set; }
+        public virtual DbSet<tblMenu> tblMenus { get; set; }
         public virtual DbSet<tblMucPhi> tblMucPhis { get; set; }
         public virtual DbSet<tblPayment> tblPayments { get; set; }
         public virtual DbSet<tblUser> tblUsers { get; set; }
