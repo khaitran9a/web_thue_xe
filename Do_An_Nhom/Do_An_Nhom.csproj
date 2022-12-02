@@ -53,6 +53,12 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -130,11 +136,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\CarController.cs" />
     <Compile Include="Areas\Admin\Controllers\DongXeController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiDichVuController.cs" />
     <Compile Include="Areas\Admin\Controllers\MucPhiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\XeController.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\FleetController.cs" />
@@ -147,6 +154,7 @@
     <Compile Include="Models\LoaiNguoiDung.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\login.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -162,7 +170,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\modelcs.cs" />
     <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblDoiMatKhau.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblDongXe.cs">
@@ -218,6 +230,7 @@
     <Content Include="Content\css\alt\adminlte.plugins.css" />
     <Content Include="Content\css\alt\adminlte.plugins.min.css" />
     <Content Include="Content\css\fontawesome.css" />
+    <Content Include="Content\css\main.css" />
     <Content Include="Content\css\owl.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\fonts\flexslider-icon.svg" />
@@ -229,6 +242,7 @@
     <Content Include="Content\images\avatar3.png" />
     <Content Include="Content\images\avatar4.png" />
     <Content Include="Content\images\avatar5.png" />
+    <Content Include="Content\images\avatars\about-1-570x350.jpg" />
     <Content Include="Content\images\blog-1-370x270.jpg" />
     <Content Include="Content\images\blog-2-370x270.jpg" />
     <Content Include="Content\images\blog-3-370x270.jpg" />
@@ -253,6 +267,12 @@
     <Content Include="Content\images\heading-5-1920x500.jpg" />
     <Content Include="Content\images\heading-6-1920x500.jpg" />
     <Content Include="Content\images\icons.png" />
+    <Content Include="Content\images\items\product-1-370x270.jpg" />
+    <Content Include="Content\images\items\product-2-370x270.jpg" />
+    <Content Include="Content\images\items\product-3-370x270.jpg" />
+    <Content Include="Content\images\items\product-4-370x270.jpg" />
+    <Content Include="Content\images\items\product-5-370x270.jpg" />
+    <Content Include="Content\images\items\product-6-370x270.jpg" />
     <Content Include="Content\images\offer-1-370x270.jpg" />
     <Content Include="Content\images\offer-2-370x270.jpg" />
     <Content Include="Content\images\offer-3-370x270.jpg" />
@@ -292,6 +312,7 @@
     <Content Include="Content\images\user6-128x128.jpg" />
     <Content Include="Content\images\user7-128x128.jpg" />
     <Content Include="Content\images\user8-128x128.jpg" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
     <Content Include="Content\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css" />
     <Content Include="Content\plugins\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
@@ -2319,7 +2340,6 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Car\Index.cshtml" />
     <Content Include="Areas\Admin\Views\MucPhi\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\MucPhi\Details.cshtml" />
     <Content Include="Areas\Admin\Views\MucPhi\Edit.cshtml" />
@@ -2330,6 +2350,11 @@
     <Content Include="Areas\Admin\Views\DongXe\Details.cshtml" />
     <Content Include="Areas\Admin\Views\DongXe\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DongXe\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiDichVu\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiDichVu\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiDichVu\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiDichVu\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiDichVu\Index.cshtml" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -2337,11 +2362,16 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\LoaiDichVu\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\LoaiDichVu\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\LoaiDichVu\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\LoaiDichVu\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\LoaiDichVu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Xe\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Xe\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Xe\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Xe\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Xe\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2354,6 +2384,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\js\adminlte.js" />
     <Content Include="Scripts\js\adminlte.min.js" />
+    <Content Include="Scripts\js\contact_custom.js" />
     <Content Include="Scripts\js\custom.js" />
     <Content Include="Scripts\js\demo.js" />
     <Content Include="Scripts\js\owl.js" />
@@ -2394,22 +2425,29 @@
     <Content Include="vendor\jquery\jquery.min.map" />
     <Content Include="vendor\jquery\jquery.slim.min.map" />
     <Content Include="Views\Shared\_HeaderNav.cshtml" />
-    <Content Include="Views\Fleet\FleetView.cshtml" />
     <Content Include="Views\Offer\OfferView.cshtml" />
     <Content Include="Scripts\js\.eslintrc.json" />
     <Content Include="Scripts\js\adminlte.js.map" />
     <Content Include="Scripts\js\adminlte.min.js.map" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
-    <Content Include="Views\SignUp\Delete.cshtml" />
-    <Content Include="Views\SignUp\Details.cshtml" />
     <Content Include="Views\SignUp\Edit.cshtml" />
     <Content Include="Views\SignUp\Index.cshtml" />
-    <Content Include="Views\SignUp\Create.cshtml" />
+    <Content Include="Views\SignUp\signUp.cshtml" />
+    <Content Include="Views\SignUp\Login.cshtml" />
+    <Content Include="Views\SignUp\Details.cshtml" />
+    <Content Include="Views\SignUp\Password.cshtml" />
+    <Content Include="Views\SignUp\Change.cshtml" />
+    <Content Include="Views\SignUp\Profile.cshtml" />
+    <Content Include="Views\Shared\_HomeBanner.cshtml" />
+    <Content Include="Views\Shared\_HomeOffer.cshtml" />
+    <Content Include="Views\Fleet\_FleetCar.cshtml" />
+    <Content Include="Views\Fleet\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Content\images\banner\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -25,11 +25,15 @@ namespace Do_An_Nhom.Models
         public Nullable<int> MaMP { get; set; }
         public Nullable<int> MaDongXe { get; set; }
         public Nullable<int> MaLoaiDV { get; set; }
-        public byte[] AnhXe { get; set; }
         public Nullable<System.DateTime> NgayDK { get; set; }
         public Nullable<int> LuotXem { get; set; }
         public Nullable<int> Rate { get; set; }
         public Nullable<int> LuotThue { get; set; }
+        public string Image { get; set; }
+        public Nullable<bool> isNew { get; set; }
+        public Nullable<bool> isActive { get; set; }
+        public string Title { get; set; }
+        public string Sub { get; set; }
     
         public virtual tblDongXe tblDongXe { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

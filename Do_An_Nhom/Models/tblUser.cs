@@ -19,6 +19,7 @@ namespace Do_An_Nhom.Models
         {
             this.tblHopDongs = new HashSet<tblHopDong>();
             this.tblXes = new HashSet<tblXe>();
+            this.tblDoiMatKhaus = new HashSet<tblDoiMatKhau>();
         }
     
         public int User_id { get; set; }
@@ -32,11 +33,15 @@ namespace Do_An_Nhom.Models
         public Nullable<int> MaLoai { get; set; }
         public Nullable<System.DateTime> Date_signup { get; set; }
         public Nullable<bool> IsAdmin { get; set; }
+        public string avatar { get; set; }
+        public Nullable<bool> isActive { get; set; }
     
         public virtual LoaiNguoiDung LoaiNguoiDung { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblHopDong> tblHopDongs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblXe> tblXes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblDoiMatKhau> tblDoiMatKhaus { get; set; }
     }
 }

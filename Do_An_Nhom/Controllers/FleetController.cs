@@ -1,17 +1,68 @@
-﻿using System;
+﻿using Do_An_Nhom.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using System.Web.UI;
 
 namespace Do_An_Nhom.Controllers
 {
     public class FleetController : Controller
     {
+        QL_THUEXEEntities db = new QL_THUEXEEntities();
         // GET: Fleet
-        public ActionResult FleetView()
+        public ActionResult FleetView(string dongXe, int? id)
         {
+            var items = db.tblXes.Find(id);
+            if (id == null)
+            {
+                ViewBag.CateTitle = "All";
+            }
+            else
+            {
+                ViewBag.CateId = items.MaDongXe;
+                ViewBag.CateTitle = items.Title;
+            }
             return View();
+        }
+
+
+        public ActionResult Index(string searchString, int? page)
+        {
+            
+            if (page == null) page = 1;
+
+
+            var items = db.tblXes.OrderBy(x => x.MaXe).ToList();
+
+            int pageSize = 4;
+
+            int pageNumber = (page ?? 1);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                searchString = searchString.ToLower();
+                items = items.Where(b => b.tblDongXe.DongXe.ToLower().Contains(searchString)).ToList();
+
+            }
+
+            return View(items.ToList().ToPagedList(pageNumber, pageSize));
+        }
+
+
+        public ActionResult FleetCar(string dongXe, int? id, int? page)
+        {
+            var items = db.tblXes.Where(i => (bool)i.isActive).ToList();
+            if (id != null)
+            {
+                items = items.Where(i => i.MaDongXe == id).ToList();
+            }
+            int pageSize = 4;
+
+            int pageNumber = (page ?? 1);
+            return PartialView("_FleetCar", items.ToPagedList(pageNumber, pageSize));
         }
     }
 }

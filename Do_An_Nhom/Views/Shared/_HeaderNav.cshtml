@@ -1,4 +1,13 @@
-﻿<ul class="navbar-nav ml-auto">
+﻿<style>
+    .user-Name {
+        position: absolute;
+    }
+</style>
+
+
+
+
+<ul class="navbar-nav ml-auto">
     <li class="nav-item active">
         @*<a class="nav-link" href="index.html">
                 Home
@@ -27,14 +36,75 @@
         </div>
     </li>
 
-    <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+    <li class="nav-item"><a class="nav-link" href="~/AboutUs/Index">About Us</a></li>
 
     <li class="nav-item">
         @Html.ActionLink("Contact Us", "Index", "Contact", null, new { @class = "nav-link" })
     </li>
 
-    <li class="nav-item">
-        @Html.ActionLink("Đăng Ký", "Create", "SignUp", null, new { @class = "nav-link" })
-    </li>
+    @*<li class="nav-item">
+            @Html.ActionLink("Đăng Ký", "signUp", "SignUp", null, new { @class = "nav-link" })
+        </li>*@
+
+    @if (Session["Fullname"] != null)
+    {
+        <li style=" z-index: 1000" class="header__navbar-item header__navbar-user" >
+            <img src="~/Content/images/avatar2.png" class="header__navbar-user-img" />
+            <a style="display: inline-block; width: 200px; margin-bottom: 14px" class="nav-link user-Name">@Session["FullName"]</a>
+            
+            <ul class="header__navbar-user-menu">
+                <li class="header__navbar-user-item">
+                    @Html.ActionLink("Tài khoản của tôi", "Profile", "SignUp", new { id = Session["UserID"] }, new { @class = "" })
+                </li>
+                <li class="header__navbar-user-item">
+                    @Html.ActionLink("Chỉnh sửa tài khoản", "Change", "SignUp")
+                </li>
+
+                <li class="header__navbar-user-item">
+                    @Html.ActionLink("Đổi mật khẩu", "Password", "SignUp")
+                </li>
+                <li class="header__navbar-user-item">
+                    <a href="">Đơn mua</a>
+                </li>
+                <li class="header__navbar-user-item header__navbar-user-item--separate">
+                    @Html.ActionLink("Đăng xuất", "LogOut", "SignUp", null, new { @class = "" })
+                </li>
+
+                @*<li class="header__navbar-user-item">
+            @Html.ActionLink("Admin", "Index", "Home", new { area = "Admin" }, new { @class = "" })
+        </li>*@
+                @if (@Session["Admin"] == "Admin")
+                {
+                    <li class="header__navbar-user-item">
+                        @Html.ActionLink("Admin", "Index", "Home", new { area = "Admin" }, new { @class = "", target = "_blank" })
+                    </li>
+                }
+            </ul>
+        </li>
+
+
+        @*<div class="widget-header mr-3">
+                <a href="Home/Profile" class="widget-view ">
+                    <div style="width: 60px; height: 60px;">
+
+                        <img src="~/Content/images/avatars/@Session["Avatar"]" class="img-avatar" title="Trang cá nhân" />
+                    </div>
+
+                </a>
+            </div>*@
+       
+
+    }
+    else
+    {
+        <li class="nav-item">
+            @Html.ActionLink("Đăng Nhập", "Login", "SignUp", null, new { @class = "nav-link" })
+        </li>
+
+    }
+
+
+
+
 
 </ul>

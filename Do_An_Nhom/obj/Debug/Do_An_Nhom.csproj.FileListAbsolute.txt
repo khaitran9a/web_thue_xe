@@ -81,3 +81,7 @@ D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\bin\EntityFramework.dll
 D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\bin\EntityFramework.SqlServer.dll
 D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\bin\EntityFramework.xml
 D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\bin\EntityFramework.SqlServer.xml
+D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\bin\PagedList.dll
+D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\bin\PagedList.Mvc.dll
+D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\bin\PagedList.xml
+D:\Nam_4\Ky_1\Web_C#\Do_An_Nhom\Do_An_Nhom\bin\PagedList.Mvc.xml

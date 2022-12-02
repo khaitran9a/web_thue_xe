@@ -213,13 +213,10 @@
                         <li class="nav-item menu-open">
 
 
-
-
-
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Dashboard
+                                    Quản lý xe
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -227,23 +224,31 @@
 
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link active">
+                                    <a href="@Url.Action("Index","Xe")" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v1</p>
+                                        <p>Quản lý xe</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index2.html" class="nav-link">
+                                    <a href="@Url.Action("Index","DongXe")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v2</p>
+                                        <p>Quản lý dòng xe</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index3.html" class="nav-link">
+                                    <a href="@Url.Action("Index","MucPhi")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v3</p>
+                                        <p>Quản lý mức phí</p>
                                     </a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index","LoaiDichVu")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Quản lý loại dịch vụ</p>
+                                    </a>
+                                </li>
+
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -256,23 +261,11 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            @Html.ActionLink("Quản lý xe", "Index", "Car", null, new { @class = "nav-link" })
-                        </li>
-
+                       
 
                         <li class="nav-item">
-                            @Html.ActionLink("Quản lý mức phí", "Index", "MucPhi", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Quản lý tài khoản", "Index", "User", new { area = "Admin" }, new { @class = "nav-link" })
                         </li>
-
-                        <li class="nav-item">
-                            @Html.ActionLink("Quản lý dòng xe", "Index", "DongXe", null, new { @class = "nav-link" })
-                        </li>
-
-                        <li class="nav-item">
-                            @Html.ActionLink("Quản lý loại dịch vụ", "Index", "LoaiDichVu", null, new { @class = "nav-link" })
-                        </li>
-
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -928,7 +921,7 @@
     <!-- AdminLTE App -->
     <script src="~/Scripts/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="~/Scripts/js/demo.js"></script>
+    @*<script src="~/Scripts/js/demo.js"></script>*@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="~/Scripts/js/pages/dashboard.js"></script>
 </body>

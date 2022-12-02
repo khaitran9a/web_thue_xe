@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QL_THUEXEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QL_THUEXEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="LoaiNguoiDung">
           <Key>
             <PropertyRef Name="MaLoai" />
@@ -21,6 +21,15 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblDoiMatKhau">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id" Type="int" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="rePassword" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblDongXe">
           <Key>
@@ -100,13 +109,15 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Name_login" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="char" MaxLength="50" />
-          <Property Name="Password" Type="nchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
           <Property Name="Phone" Type="char" MaxLength="11" />
           <Property Name="Address" Type="nvarchar" MaxLength="50" />
           <Property Name="Birthday" Type="date" />
           <Property Name="MaLoai" Type="int" />
           <Property Name="Date_signup" Type="datetime" />
           <Property Name="IsAdmin" Type="bit" />
+          <Property Name="avatar" Type="varchar" MaxLength="200" />
+          <Property Name="isActive" Type="bit" />
         </EntityType>
         <EntityType Name="tblXe">
           <Key>
@@ -117,11 +128,15 @@
           <Property Name="MaMP" Type="int" />
           <Property Name="MaDongXe" Type="int" />
           <Property Name="MaLoaiDV" Type="int" />
-          <Property Name="AnhXe" Type="image" />
           <Property Name="NgayDK" Type="date" />
           <Property Name="LuotXem" Type="int" />
           <Property Name="Rate" Type="int" />
           <Property Name="LuotThue" Type="int" />
+          <Property Name="Image" Type="varchar" MaxLength="200" />
+          <Property Name="isNew" Type="bit" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Sub" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK_Table_1_tblHopDong">
           <End Role="tblHopDong" Type="Self.tblHopDong" Multiplicity="0..1" />
@@ -144,6 +159,18 @@
             </Principal>
             <Dependent Role="tblGiaoDich">
               <PropertyRef Name="MaPayment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDoiMatKhau_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblDoiMatKhau" Type="Self.tblDoiMatKhau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="tblDoiMatKhau">
+              <PropertyRef Name="User_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -246,6 +273,7 @@
         <EntityContainer Name="QL_THUEXEModelStoreContainer">
           <EntitySet Name="LoaiNguoiDung" EntityType="Self.LoaiNguoiDung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDoiMatKhau" EntityType="Self.tblDoiMatKhau" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDongXe" EntityType="Self.tblDongXe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblGiaoDich" EntityType="Self.tblGiaoDich" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblHopDong" EntityType="Self.tblHopDong" Schema="dbo" store:Type="Tables" />
@@ -263,6 +291,10 @@
           <AssociationSet Name="FK_Table_1_tblPayment" Association="Self.FK_Table_1_tblPayment">
             <End Role="tblPayment" EntitySet="tblPayment" />
             <End Role="tblGiaoDich" EntitySet="tblGiaoDich" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDoiMatKhau_tblUser" Association="Self.FK_tblDoiMatKhau_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblDoiMatKhau" EntitySet="tblDoiMatKhau" />
           </AssociationSet>
           <AssociationSet Name="FK_tblHopDong_tblUser" Association="Self.FK_tblHopDong_tblUser">
             <End Role="tblUser" EntitySet="tblUser" />
@@ -297,8 +329,7 @@
             <End Role="tblXe" EntitySet="tblXe" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QL_THUEXEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -409,16 +440,19 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Name_login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Birthday" Type="DateTime" Precision="0" />
           <Property Name="MaLoai" Type="Int32" />
           <Property Name="Date_signup" Type="DateTime" Precision="3" />
           <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="LoaiNguoiDung" Relationship="Self.FK_tblUser_LoaiNguoiDung" FromRole="tblUser" ToRole="LoaiNguoiDung" />
           <NavigationProperty Name="tblHopDongs" Relationship="Self.FK_tblHopDong_tblUser" FromRole="tblUser" ToRole="tblHopDong" />
           <NavigationProperty Name="tblXes" Relationship="Self.FK_tblXe_tblUser" FromRole="tblUser" ToRole="tblXe" />
+          <NavigationProperty Name="tblDoiMatKhaus" Relationship="QL_THUEXEModel.FK_tblDoiMatKhau_tblUser" FromRole="tblUser" ToRole="tblDoiMatKhau" />
+          <Property Name="isActive" Type="Boolean" />
         </EntityType>
         <EntityType Name="tblXe">
           <Key>
@@ -429,16 +463,20 @@
           <Property Name="MaMP" Type="Int32" />
           <Property Name="MaDongXe" Type="Int32" />
           <Property Name="MaLoaiDV" Type="Int32" />
-          <Property Name="AnhXe" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="NgayDK" Type="DateTime" Precision="0" />
           <Property Name="LuotXem" Type="Int32" />
           <Property Name="Rate" Type="Int32" />
           <Property Name="LuotThue" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblDongXe" Relationship="Self.FK_tblXe_tblDongXe" FromRole="tblXe" ToRole="tblDongXe" />
           <NavigationProperty Name="tblHopDongs" Relationship="Self.FK_tblHopDong_tblXe" FromRole="tblXe" ToRole="tblHopDong" />
           <NavigationProperty Name="tblLoaiDichVu" Relationship="Self.FK_tblXe_tblLoaiDichVu" FromRole="tblXe" ToRole="tblLoaiDichVu" />
           <NavigationProperty Name="tblMucPhi" Relationship="Self.FK_tblXe_tblMucPhi" FromRole="tblXe" ToRole="tblMucPhi" />
           <NavigationProperty Name="tblUser" Relationship="Self.FK_tblXe_tblUser" FromRole="tblXe" ToRole="tblUser" />
+          <Property Name="isNew" Type="Boolean" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Sub" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_tblUser_LoaiNguoiDung">
           <End Role="LoaiNguoiDung" Type="Self.LoaiNguoiDung" Multiplicity="0..1" />
@@ -613,7 +651,34 @@
             <End Role="tblUser" EntitySet="tblUsers" />
             <End Role="tblXe" EntitySet="tblXes" />
           </AssociationSet>
+          <EntitySet Name="tblDoiMatKhaus" EntityType="QL_THUEXEModel.tblDoiMatKhau" />
+          <AssociationSet Name="FK_tblDoiMatKhau_tblUser" Association="QL_THUEXEModel.FK_tblDoiMatKhau_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblDoiMatKhau" EntitySet="tblDoiMatKhaus" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="tblDoiMatKhau">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rePassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblUser" Relationship="QL_THUEXEModel.FK_tblDoiMatKhau_tblUser" FromRole="tblDoiMatKhau" ToRole="tblUser" />
+        </EntityType>
+        <Association Name="FK_tblDoiMatKhau_tblUser">
+          <End Type="QL_THUEXEModel.tblUser" Role="tblUser" Multiplicity="0..1" />
+          <End Type="QL_THUEXEModel.tblDoiMatKhau" Role="tblDoiMatKhau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="tblDoiMatKhau">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -720,6 +785,7 @@
           <EntitySetMapping Name="tblUsers">
             <EntityTypeMapping TypeName="QL_THUEXEModel.tblUser">
               <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="User_id" ColumnName="User_id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Name_login" ColumnName="Name_login" />
@@ -731,22 +797,37 @@
                 <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
                 <ScalarProperty Name="Date_signup" ColumnName="Date_signup" />
                 <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblXes">
             <EntityTypeMapping TypeName="QL_THUEXEModel.tblXe">
               <MappingFragment StoreEntitySet="tblXe">
+                <ScalarProperty Name="Sub" ColumnName="Sub" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="isNew" ColumnName="isNew" />
                 <ScalarProperty Name="MaXe" ColumnName="MaXe" />
                 <ScalarProperty Name="User_id" ColumnName="User_id" />
                 <ScalarProperty Name="MaMP" ColumnName="MaMP" />
                 <ScalarProperty Name="MaDongXe" ColumnName="MaDongXe" />
                 <ScalarProperty Name="MaLoaiDV" ColumnName="MaLoaiDV" />
-                <ScalarProperty Name="AnhXe" ColumnName="AnhXe" />
                 <ScalarProperty Name="NgayDK" ColumnName="NgayDK" />
                 <ScalarProperty Name="LuotXem" ColumnName="LuotXem" />
                 <ScalarProperty Name="Rate" ColumnName="Rate" />
                 <ScalarProperty Name="LuotThue" ColumnName="LuotThue" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDoiMatKhaus">
+            <EntityTypeMapping TypeName="QL_THUEXEModel.tblDoiMatKhau">
+              <MappingFragment StoreEntitySet="tblDoiMatKhau">
+                <ScalarProperty Name="rePassword" ColumnName="rePassword" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

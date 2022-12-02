@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Do_An_Nhom.Models.tblXe>
+
+
+
+
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="product-item">
+                <a href="~/Offer/OfferView"><img src="~/Content/images/@item.Image" alt=""></a>
+                <div class="down-content">
+                    <a href="~/Offer/OfferView"><h4>@item.Title</h4></a>
+                    <h6><small>Giá chỉ từ</small> @item.tblMucPhi.DonGia <small>/ 24h</small></h6>
+                    <p>@item.Sub</p>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+    @*<div class="row">
+        <div class="col-md-12">
+            <div class="section-heading">
+                <h2>Offers</h2>
+                <a href="~/Offer/OfferView">view more <i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="product-item">
+                <a href="offers.html"><img src="~/Content/images/offer-1-370x270.jpg" alt=""></a>
+                <div class="down-content">
+                    <a href="offers.html"><h4>Lorem ipsum dolor sit amet, consectetur</h4></a>
+                    <h6><small>from</small> $120 <small>per weekend</small></h6>
+                    <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="product-item">
+                <a href="offers.html"><img src="~/Content/images/offer-2-370x270.jpg" alt=""></a>
+                <div class="down-content">
+                    <a href="offers.html"><h4>Estorum aspernatur officiis accusamus </h4></a>
+                    <h6><small>from</small> $150 <small>per weekend</small></h6>
+                    <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="product-item">
+                <a href="offers.html"><img src="~/Content/images/offer-3-370x270.jpg" alt=""></a>
+                <div class="down-content">
+                    <a href="offers.html"><h4>Reiciendis ullam culpa optio providen</h4></a>
+                    <h6><small>from</small> $150 <small>per weekend</small></h6>
+                    <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+                </div>
+            </div>
+        </div>
+    </div>*@

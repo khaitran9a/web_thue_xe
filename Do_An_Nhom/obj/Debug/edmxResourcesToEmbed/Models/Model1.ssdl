@@ -17,6 +17,15 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <EntityType Name="tblDoiMatKhau">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_id" Type="int" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="rePassword" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="tblDongXe">
     <Key>
       <PropertyRef Name="MaDongXe" />
@@ -95,13 +104,15 @@
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
     <Property Name="Name_login" Type="varchar" MaxLength="50" />
     <Property Name="Email" Type="char" MaxLength="50" />
-    <Property Name="Password" Type="nchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
     <Property Name="Phone" Type="char" MaxLength="11" />
     <Property Name="Address" Type="nvarchar" MaxLength="50" />
     <Property Name="Birthday" Type="date" />
     <Property Name="MaLoai" Type="int" />
     <Property Name="Date_signup" Type="datetime" />
     <Property Name="IsAdmin" Type="bit" />
+    <Property Name="avatar" Type="varchar" MaxLength="200" />
+    <Property Name="isActive" Type="bit" />
   </EntityType>
   <EntityType Name="tblXe">
     <Key>
@@ -112,11 +123,15 @@
     <Property Name="MaMP" Type="int" />
     <Property Name="MaDongXe" Type="int" />
     <Property Name="MaLoaiDV" Type="int" />
-    <Property Name="AnhXe" Type="image" />
     <Property Name="NgayDK" Type="date" />
     <Property Name="LuotXem" Type="int" />
     <Property Name="Rate" Type="int" />
     <Property Name="LuotThue" Type="int" />
+    <Property Name="Image" Type="varchar" MaxLength="200" />
+    <Property Name="isNew" Type="bit" />
+    <Property Name="isActive" Type="bit" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Sub" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <Association Name="FK_Table_1_tblHopDong">
     <End Role="tblHopDong" Type="Self.tblHopDong" Multiplicity="0..1" />
@@ -139,6 +154,18 @@
       </Principal>
       <Dependent Role="tblGiaoDich">
         <PropertyRef Name="MaPayment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDoiMatKhau_tblUser">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+    <End Role="tblDoiMatKhau" Type="Self.tblDoiMatKhau" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="tblDoiMatKhau">
+        <PropertyRef Name="User_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -241,6 +268,7 @@
   <EntityContainer Name="QL_THUEXEModelStoreContainer">
     <EntitySet Name="LoaiNguoiDung" EntityType="Self.LoaiNguoiDung" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDoiMatKhau" EntityType="Self.tblDoiMatKhau" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblDongXe" EntityType="Self.tblDongXe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblGiaoDich" EntityType="Self.tblGiaoDich" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblHopDong" EntityType="Self.tblHopDong" Schema="dbo" store:Type="Tables" />
@@ -258,6 +286,10 @@
     <AssociationSet Name="FK_Table_1_tblPayment" Association="Self.FK_Table_1_tblPayment">
       <End Role="tblPayment" EntitySet="tblPayment" />
       <End Role="tblGiaoDich" EntitySet="tblGiaoDich" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDoiMatKhau_tblUser" Association="Self.FK_tblDoiMatKhau_tblUser">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblDoiMatKhau" EntitySet="tblDoiMatKhau" />
     </AssociationSet>
     <AssociationSet Name="FK_tblHopDong_tblUser" Association="Self.FK_tblHopDong_tblUser">
       <End Role="tblUser" EntitySet="tblUser" />

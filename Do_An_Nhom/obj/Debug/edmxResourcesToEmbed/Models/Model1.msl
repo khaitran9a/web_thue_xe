@@ -101,6 +101,7 @@
     <EntitySetMapping Name="tblUsers">
       <EntityTypeMapping TypeName="QL_THUEXEModel.tblUser">
         <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
           <ScalarProperty Name="User_id" ColumnName="User_id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Name_login" ColumnName="Name_login" />
@@ -112,22 +113,37 @@
           <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
           <ScalarProperty Name="Date_signup" ColumnName="Date_signup" />
           <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblXes">
       <EntityTypeMapping TypeName="QL_THUEXEModel.tblXe">
         <MappingFragment StoreEntitySet="tblXe">
+          <ScalarProperty Name="Sub" ColumnName="Sub" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="isNew" ColumnName="isNew" />
           <ScalarProperty Name="MaXe" ColumnName="MaXe" />
           <ScalarProperty Name="User_id" ColumnName="User_id" />
           <ScalarProperty Name="MaMP" ColumnName="MaMP" />
           <ScalarProperty Name="MaDongXe" ColumnName="MaDongXe" />
           <ScalarProperty Name="MaLoaiDV" ColumnName="MaLoaiDV" />
-          <ScalarProperty Name="AnhXe" ColumnName="AnhXe" />
           <ScalarProperty Name="NgayDK" ColumnName="NgayDK" />
           <ScalarProperty Name="LuotXem" ColumnName="LuotXem" />
           <ScalarProperty Name="Rate" ColumnName="Rate" />
           <ScalarProperty Name="LuotThue" ColumnName="LuotThue" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDoiMatKhaus">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblDoiMatKhau">
+        <MappingFragment StoreEntitySet="tblDoiMatKhau">
+          <ScalarProperty Name="rePassword" ColumnName="rePassword" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

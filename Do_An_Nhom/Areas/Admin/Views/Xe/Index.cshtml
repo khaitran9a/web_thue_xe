@@ -1,0 +1,209 @@
+﻿@model IEnumerable<Do_An_Nhom.Models.tblXe>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Quản lý Xe</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Admin/Home">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Quản lý Xe</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">@Html.ActionLink("Thêm mới", "Create")</h3>
+                        <h3 class="card-title">@*<button id="create" class="btn btn-warning btn-sm">Thêm mới</button>*@</h3>
+                        <div class="card-tools">
+                            @using (Html.BeginForm())
+                            {
+                                <div class="input-group input-group-sm" style="width: 250px;">
+                                    @*<input type="text" name="table_search" class="form-control float-right" placeholder="Tìm kiếm">*@
+                                    @Html.TextBox("searchString", "", htmlAttributes: new { @class = "form-control float-right", @placeholder = "Tìm kiếm" })
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Đòng xe</th>
+                                    <th>Dịch vụ</th>
+                                    <th>Giá thuê</th>
+                                    <th>Ảnh xe</th>
+                                    <th>Trạng thái</th>
+                                    <th>Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int i = 1;}
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@i</td>
+                                        <td>@Html.DisplayFor(modelItem => item.tblDongXe.DongXe)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.tblLoaiDichVu.TenLoaiDV)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.tblMucPhi.DonGia)</td>
+                                        <td><img style="width: 100px" src="~/Content/images/items/@item.Image" /></td>
+                                        <td>@Html.DisplayFor(modelItem => item.isActive)</td>
+                                        <td>
+                                           
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.MaXe }, new { @class = "btn btn-primary btn-sm" })
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.MaXe }, new { @class = "btn btn-danger btn-sm" })
+                                            
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+@*<h2>Index</h2>
+
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LuotXem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LuotThue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isNew)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sub)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblDongXe.DongXe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblLoaiDichVu.TenLoaiDV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblMucPhi.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblUser.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LuotXem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LuotThue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isNew)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sub)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblDongXe.DongXe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblLoaiDichVu.TenLoaiDV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblMucPhi.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblUser.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaXe }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaXe }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaXe })
+            </td>
+        </tr>
+    }
+
+</table>*@

@@ -107,16 +107,19 @@
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Name_login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Phone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
     <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Birthday" Type="DateTime" Precision="0" />
     <Property Name="MaLoai" Type="Int32" />
     <Property Name="Date_signup" Type="DateTime" Precision="3" />
     <Property Name="IsAdmin" Type="Boolean" />
+    <Property Name="avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="LoaiNguoiDung" Relationship="Self.FK_tblUser_LoaiNguoiDung" FromRole="tblUser" ToRole="LoaiNguoiDung" />
     <NavigationProperty Name="tblHopDongs" Relationship="Self.FK_tblHopDong_tblUser" FromRole="tblUser" ToRole="tblHopDong" />
     <NavigationProperty Name="tblXes" Relationship="Self.FK_tblXe_tblUser" FromRole="tblUser" ToRole="tblXe" />
+    <NavigationProperty Name="tblDoiMatKhaus" Relationship="QL_THUEXEModel.FK_tblDoiMatKhau_tblUser" FromRole="tblUser" ToRole="tblDoiMatKhau" />
+    <Property Name="isActive" Type="Boolean" />
   </EntityType>
   <EntityType Name="tblXe">
     <Key>
@@ -127,16 +130,20 @@
     <Property Name="MaMP" Type="Int32" />
     <Property Name="MaDongXe" Type="Int32" />
     <Property Name="MaLoaiDV" Type="Int32" />
-    <Property Name="AnhXe" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="NgayDK" Type="DateTime" Precision="0" />
     <Property Name="LuotXem" Type="Int32" />
     <Property Name="Rate" Type="Int32" />
     <Property Name="LuotThue" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="tblDongXe" Relationship="Self.FK_tblXe_tblDongXe" FromRole="tblXe" ToRole="tblDongXe" />
     <NavigationProperty Name="tblHopDongs" Relationship="Self.FK_tblHopDong_tblXe" FromRole="tblXe" ToRole="tblHopDong" />
     <NavigationProperty Name="tblLoaiDichVu" Relationship="Self.FK_tblXe_tblLoaiDichVu" FromRole="tblXe" ToRole="tblLoaiDichVu" />
     <NavigationProperty Name="tblMucPhi" Relationship="Self.FK_tblXe_tblMucPhi" FromRole="tblXe" ToRole="tblMucPhi" />
     <NavigationProperty Name="tblUser" Relationship="Self.FK_tblXe_tblUser" FromRole="tblXe" ToRole="tblUser" />
+    <Property Name="isNew" Type="Boolean" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Sub" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_tblUser_LoaiNguoiDung">
     <End Role="LoaiNguoiDung" Type="Self.LoaiNguoiDung" Multiplicity="0..1" />
@@ -311,5 +318,32 @@
       <End Role="tblUser" EntitySet="tblUsers" />
       <End Role="tblXe" EntitySet="tblXes" />
     </AssociationSet>
+    <EntitySet Name="tblDoiMatKhaus" EntityType="QL_THUEXEModel.tblDoiMatKhau" />
+    <AssociationSet Name="FK_tblDoiMatKhau_tblUser" Association="QL_THUEXEModel.FK_tblDoiMatKhau_tblUser">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="tblDoiMatKhau" EntitySet="tblDoiMatKhaus" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="tblDoiMatKhau">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_id" Type="Int32" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rePassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblUser" Relationship="QL_THUEXEModel.FK_tblDoiMatKhau_tblUser" FromRole="tblDoiMatKhau" ToRole="tblUser" />
+  </EntityType>
+  <Association Name="FK_tblDoiMatKhau_tblUser">
+    <End Type="QL_THUEXEModel.tblUser" Role="tblUser" Multiplicity="0..1" />
+    <End Type="QL_THUEXEModel.tblDoiMatKhau" Role="tblDoiMatKhau" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="tblDoiMatKhau">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -1,0 +1,218 @@
+﻿@model Do_An_Nhom.Models.tblUser
+
+@{
+    ViewBag.Title = "signUp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .SignUp {
+        margin: auto;
+        transform: translateY(100px);
+        padding: 20px;
+        border: 1px solid #F33F3F;
+        z-index: 1000;
+        height: fit-content;
+        border-radius: 2px;
+        box-shadow: 0 0 0 0.2rem rgb(243 63 63 / 25%);
+    }
+
+    .form-signup > h2 {
+        color: #F33F3F;
+    }
+
+    .signup-row {
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .signup-row-title {
+        padding: 0;
+    }
+
+    .signup-input:focus {
+        border-color: #F33F3F;
+        box-shadow: 0 0 0 0.2rem rgb(243 63 63 / 25%);
+    }
+
+    .signup-input::placeholder {
+        font-size: 14px;
+    }
+
+    .signup-btn {
+        margin-top: 40px;
+        margin-right: 15px;
+        margin-left: 15px;
+        padding: 5px 10px;
+        width: 110px
+    }
+</style>
+
+
+<div class="SignUp col-md-8">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal form-signup">
+            <h2>Đăng ký thành viên</h2>
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group d-flex signup-row">
+                <div class="col-md-6">
+                    <label class="control-label col-md-5 signup-row-title">Tên đầy đủ</label>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập vào tên", id = "name" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+                </div>
+
+
+                <div class="col-md-6">
+                    <label class="control-label col-md-5 signup-row-title">Tên đăng nhập</label>
+                    @Html.EditorFor(model => model.Name_login, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập vào tên đăng nhập", id = "name-login" } })
+                    @Html.ValidationMessageFor(model => model.Name_login, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập vào tên email", name = "email", id = "email" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    <p style="color:red;">@ViewData["error"]</p>
+                </div>
+            </div>
+
+
+            <div class="form-group d-flex signup-row">
+                <div class="col-md-6">
+                    <label class="control-label col-md-5 signup-row-title">Mật khẩu</label>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập vào mật khẩu", type = "password", id = "password" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-md-6">
+                    <label class="control-label col-md-5 signup-row-title">Xác nhận mật khẩu</label>
+                    <input placeholder="Nhập lại mật khẩu" , type="password" class="form-control signup-input" id="repassword" />
+                    @*@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập lại mật khẩu", type = "password"     } })*@
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="control-label col-md-5 signup-row-title">Số điện thoại</label>
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập vào số điện thoại", id = "phone" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group d-flex signup-row">
+
+                <div class="col-md-6">
+                    <label class="control-label col-md-5 signup-row-title">Địa chỉ</label>
+                    @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập địa chỉ", id = "address" } })
+                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    <label class="control-label col-md-5 signup-row-title">Avatar</label>
+                    <input type="file" id="uploadhinh" name="uploadhinh" accept="image/*" class="signup-input" />
+                    @*@Html.EditorFor(model => model.avatar, new { htmlAttributes = new { @class = "signup-input", type = "file", id = "uploadhinh", name = "uploadhinh", accept = "image/*" } })*@
+                    @Html.ValidationMessageFor(model => model.avatar, "", new { @class = "text-danger" })
+                </div>
+
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control signup-input", Type = "date" } })
+                    @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group d-flex signup-row">
+                @Html.ActionLink("Quay lại", "Index", "Home", null, new { @class = "btn  btn-secondary signup-btn" })
+                <div>
+                    @Html.ActionLink("Đăng nhập", "Login", "SignUp", null, new { @class = "btn  btn-danger signup-btn" })
+
+                    <input id="signup" type="submit" name="submit" value="Đăng ký" class="btn btn-info signup-btn" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+
+@*@section script{
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+    <script src="~/Content/plugins/jquery-ui/jquery-ui.js"></script>
+    <script src="~/Scripts/js/contact_custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#signup").click(function () {
+                _name = $("#name").val();
+                _name-login = $("#name-login").val();
+                _phone = $("#input_phone").val();
+                _pass = $("#password".val());
+                _repass = $("#repassword").val();
+                _email = $("#input_email").val();
+                _phone = $("#phone").val();
+                _address = $("#address").val();
+
+      
+
+                if ($("#name").val() == "") {
+                    alert("Vui lòng nhập tên!");
+                    return;
+                }
+
+                if ($("#name").val() == "") {
+                    alert("Vui lòng nhập tên!");
+                    return;
+                }
+                if ($("#name-login").val() == "") {
+                    alert("Vui lòng nhập tên đăng nhập!");
+                    return;
+                }
+                if (!checkEmail($("#email").val())) {
+                    alert("Email sai định dạng");
+                    return;
+                }
+                else {
+                $.ajax({
+                    type: "POST",
+                    type: "POST",
+                    url: "/signUp/SignUp",
+                    data: { name: _name, pass: _pass, repass: _repass, phone: _phone, email: _email, address: _address },
+                    success: function (data) {
+                        if (data.message) {
+                            alert("Bạn đã gửi phản ánh thành công");
+                        }
+                        else {
+                            alert("Bạn đã gửi phản ánh không thành công");
+                        }
+                    }
+                });
+            };
+
+
+        })
+
+    </script>
+}*@
+
