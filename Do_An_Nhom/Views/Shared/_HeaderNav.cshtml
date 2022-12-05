@@ -17,7 +17,7 @@
     </li>
 
     <li class="nav-item">
-        @Html.ActionLink("Fleet", "FleetView", "Fleet", null, new { @class = "nav-link" })
+        @Html.ActionLink("Fleet", "Index", "Fleet", null, new { @class = "nav-link" })
     </li>
     <li class="nav-item">
         @Html.ActionLink("Offer", "OfferView", "Offer", null, new { @class = "nav-link" })
@@ -49,10 +49,12 @@
     @if (Session["Fullname"] != null)
     {
         <li style=" z-index: 1000" class="header__navbar-item header__navbar-user" >
-            <img src="~/Content/images/avatar2.png" class="header__navbar-user-img" />
-            <a style="display: inline-block; width: 200px; margin-bottom: 14px" class="nav-link user-Name">@Session["FullName"]</a>
+            <img src="~/Content/images/avatars/@Session["Avatar"]" class="header__navbar-user-img" />
             
-            <ul class="header__navbar-user-menu">
+            <ul class="header__navbar-user-menu" style="width: 180px">
+                <li class="header__navbar-user-item">
+                    <a href="#">@Session["FullName"]</a>
+                </li>
                 <li class="header__navbar-user-item">
                     @Html.ActionLink("Tài khoản của tôi", "Profile", "SignUp", new { id = Session["UserID"] }, new { @class = "" })
                 </li>

@@ -5,92 +5,97 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+
+
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1 class="m-0">Quản lý tài khoản</h1>
             </div><!-- /.col -->
-
-        </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-</div>
-
-<div class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
             <div class="col-sm-6">
-                @Html.ActionLink("Create New", "Create", new { @class = "btn btn-primary" })
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Admin/Home">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Quản lý tài khoản</li>
+                </ol>
             </div><!-- /.col -->
-
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
-<style>
-    table, tr, td, th {
-        border: 1px solid #333;
-        border-collapse: collapse;
-    }
-</style>
-<table class="table col-md-10 m-auto">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name_login)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Birthday)
-        </th>
 
-        <th></th>
-    </tr>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">@Html.ActionLink("Thêm mới", "Create")</h3>
+                        <h3 class="card-title">@*<button id="create" class="btn btn-warning btn-sm">Thêm mới</button>*@</h3>
+                        <div class="card-tools">
+                            @using (Html.BeginForm())
+                            {
+                                <div class="input-group input-group-sm" style="width: 250px;">
+                                    @*<input type="text" name="table_search" class="form-control float-right" placeholder="Tìm kiếm">*@
+                                    @Html.TextBox("searchString", "", htmlAttributes: new { @class = "form-control float-right", @placeholder = "Tìm kiếm" })
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name_login)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Birthday)
-            </td>
 
-      
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.User_id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.User_id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.User_id })
-            </td>
-        </tr>
-    }
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Tên đầy đủ</th>
+                                    <th>Tên đăng nhập </th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Avatar</th>
+                                    <th>Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int i = 1;}
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@i</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Name_login)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                                        <td><img style="width: 100px" src="~/Content/images/avatars/@item.avatar" /></td>
+                                        <td>
 
-</table>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.User_id }, new { @class = "btn btn-primary btn-sm" })
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.User_id }, new { @class = "btn btn-danger btn-sm" })
+
+                                        </td>
+
+                                    </tr>
+                                    i++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

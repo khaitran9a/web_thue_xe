@@ -7,7 +7,7 @@
 
 <h2>Create</h2>
 
-
+<form action="" method="post" enctype="multipart/form-data">
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -83,7 +83,8 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "", type = "file", id = "uploadhinh", name = "uploadhinh", accept = "image/*" } })
+                    <input type="file" id="uploadhinh" name="uploadhinh" accept="image/*" class="" />
+                   @* @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "", type = "file", id = "uploadhinh", name = "uploadhinh", accept = "image/*" } })*@
                     @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -131,7 +132,7 @@
             </div>
         </div>
     }
-
+ </form>
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>

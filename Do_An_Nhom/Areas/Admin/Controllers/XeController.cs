@@ -56,7 +56,7 @@ namespace Do_An_Nhom.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaXe,User_id,MaMP,MaDongXe,MaLoaiDV,NgayDK,LuotXem,Rate,LuotThue,Image,isNew,isActive,Title,Sub")] tblXe tblXe, HttpPostedFileBase uploadhinh)
+        public ActionResult Create(tblXe tblXe, HttpPostedFileBase uploadhinh)
         {
             if (ModelState.IsValid)
             {
@@ -66,12 +66,10 @@ namespace Do_An_Nhom.Areas.Admin.Controllers
                 if (uploadhinh != null && uploadhinh.ContentLength > 0)
                 {
                     int id = tblXe.MaXe;
-
-                     
-
+                    string _FileName = "";
                     int index = uploadhinh.FileName.IndexOf('.');
 
-                    string _FileName = "xe" + id.ToString() + "." + uploadhinh.FileName.Substring(index + 1);
+                    _FileName = "Xe" + id.ToString() + "." + uploadhinh.FileName.Substring(index + 1);
                     string _path = Path.Combine(Server.MapPath("~/Content/images/items"), _FileName);
                     uploadhinh.SaveAs(_path);
                     tblXe.Image = _FileName;
@@ -79,22 +77,6 @@ namespace Do_An_Nhom.Areas.Admin.Controllers
 
                 db.SaveChanges();
 
-
-
-                //if (uploadhinh != null && uploadhinh.ContentLength > 0)
-                //{
-                //    int id = tblXe.MaXe;
-
-                //    string _FileName = "";
-
-                //    int index = uploadhinh.FileName.IndexOf('.');
-
-                //    _FileName = "Product" + id.ToString() + "." + uploadhinh.FileName.Substring(index + 1);
-                //    string _path = Path.Combine(Server.MapPath("~/Content/images/items"), _FileName);
-                //    uploadhinh.SaveAs(_path);
-                //    tblXe.Image = _FileName;
-                //}
-                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -129,11 +111,25 @@ namespace Do_An_Nhom.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaXe,User_id,MaMP,MaDongXe,MaLoaiDV,NgayDK,LuotXem,Rate,LuotThue,Image,isNew,isActive,Title,Sub")] tblXe tblXe)
+        public ActionResult Edit([Bind(Include = "MaXe,User_id,MaMP,MaDongXe,MaLoaiDV,NgayDK,LuotXem,Rate,LuotThue,Image,isNew,isActive,Title,Sub")] tblXe tblXe, HttpPostedFileBase uploadhinh)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tblXe).State = EntityState.Modified;
+                db.SaveChanges();
+                if (uploadhinh != null && uploadhinh.ContentLength > 0)
+                {
+                    int id = tblXe.MaXe;
+
+                    string _FileName = "";
+
+                    int index = uploadhinh.FileName.IndexOf('.');
+
+                    _FileName = "Product" + id.ToString() + "." + uploadhinh.FileName.Substring(index + 1);
+                    string _path = Path.Combine(Server.MapPath("~/Content/images/items"), _FileName);
+                    uploadhinh.SaveAs(_path);
+                    tblXe.Image = _FileName;
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

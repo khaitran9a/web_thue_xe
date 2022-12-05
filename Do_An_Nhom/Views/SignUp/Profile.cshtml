@@ -1,120 +1,104 @@
 ﻿@model Do_An_Nhom.Models.tblUser
-
-
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <style>
-    .frame-profile, .frame-profile2 {
-        width: 1000px;
-        margin: 50px auto;
-        padding: 20px;
+    .frame-change-pass {
+        border: 1px solid #F33F3F;
+        margin: auto;
+        padding: 30px;
         background: white;
-        height: auto;
-    }
-
-    .dl-horizontal {
-        width: 50%;
-        float: left;
-        padding: 20px;
-    }
-
-    dd {
-        padding: 10px 20px;
-    }
-
-    a {
-        padding: 0px 20px;
-        float: left;
-    }
-
-    dd {
-        font-weight: bold;
-        width: 100%;
-        text-align: right;
-    }
-
-    .btn:hover {
-        color: blue;
+        transform: translateY(120px);
+        z-index: 1000;
     }
 </style>
 
-@if (Session["UserId"] == null)
-{
-    <style>
-        .frame-profile {
-            display: none;
-        }
-    </style>
-
-    <div class="frame-profile2">
-        <h2 style="color:red">Bạn chưa đăng nhập</h2>
-        <div class="btn btn-success p-2 m-3">
-            <a href="Login" style="color:white">Đăng Nhập</a>
-        </div>
-        <div class="btn btn-danger text-white p-2 m-3">
-            <a href="Register" style="color:white"> Đăng Kí</a>
-        </div>
-    </div>
-
-}
-
-
-
-<div class="frame-profile">
-    <div>
-        <h2>Thông tin cá nhân</h2>
-
+<div class="frame-change-pass col-8">
+    <form action="" method="post" enctype="multipart/form-data">
+        <h2>Thông tin tài khoản </h2>
         <hr />
 
-        <dl class="dl-horizontal" style="border-right: solid 1px gray;">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-            <dd>
-                <a class="a">Id người dùng:</a> @Html.DisplayFor(model => model.User_id)
-            </dd>
-            <dd>
-                <a>Tên đăng nhập:</a>@Html.DisplayFor(model => model.Name_login)
-            </dd>
-            <dd>
-                <a>Họ và tên:</a>@Html.DisplayFor(model => model.Name)
-            </dd>
-            <dd>
-                <a>Email:</a> @Html.DisplayFor(model => model.Email)
-            </dd>
-            <dd>
-                <a>Địa chỉ:</a> @Html.DisplayFor(model => model.Address)
-            </dd>
+            <div class="form-horizontal">
 
-            <dd>
-                <a>Số điện thoại:</a> @Html.DisplayFor(model => model.Phone)
-            </dd>
-        </dl>
-        <dl class="dl-horizontal">
+                <h4 style="color:red;">@ViewData["error"]</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group d-flex signup-row">
+                    <div class="col-md-12">
+                        <label class="control-label col-md-5 signup-row-title">Tên đầy đủ</label>
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập vào tên", id = "name", @disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
 
-       
+                    </div>
 
-            <dd>
-                <a>Thời gian tạo tài khoản:</a> @Html.DisplayFor(model => model.Date_signup)
-            </dd>
+                </div>
 
-            <dd>
-                <a>Ảnh đại diện:</a>
-                <img src="~/Content/images/avatars/@Html.DisplayFor(model => Model.avatar) " style="width: 200px; height: 200px; border: solid 1px gray;" />
-            </dd>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập vào tên email", name = "email", id = "email", @disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        <p style="color:red;">@ViewData["error"]</p>
+                    </div>
+                </div>
 
-        </dl>
-        <div class="btn btn-success text-white ">
-            @Html.ActionLink("Đổi thông tin", "Change", new { /* id = Model.PrimaryKey */ })
-        </div>
-        <div class="btn btn-warning text-white ">
-            @Html.ActionLink("Đổi mật khẩu", "Password", new { /* id = Model.PrimaryKey */ })
-        </div>
-        <div class="btn btn-danger text-white ">
-            @Html.ActionLink("Đăng xuất", "Logout", new { /* id = Model.PrimaryKey */ })
-        </div>
 
-    </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="control-label col-md-5 signup-row-title">Số điện thoại</label>
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập vào số điện thoại", id = "phone", @disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
+                <div class="form-group d-flex signup-row">
+
+                    <div class="col-md-6">
+                        <label class="control-label col-md-5 signup-row-title">Địa chỉ</label>
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập địa chỉ", id = "address", @disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label col-md-5 signup-row-title">Avatar</label>
+                        <img src="~/Content/images/avatars/@Session["Avatar"]" style="display: block; width: 400px"/>
+                        @*@Html.EditorFor(model => model.avatar, new { htmlAttributes = new { @class = "signup-input", type = "file", id = "uploadhinh", name = "uploadhinh", accept = "image/*" } })*@
+                        @Html.ValidationMessageFor(model => model.avatar, "", new { @class = "text-danger" })
+                    </div>
+
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control signup-input", Type = "date", @disabled = "disabled" } })
+                        @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group d-flex justify-content-between col-10">
+
+                    <div class="col-9 p-0">
+                        @*@Html.ActionLink("Về trang chủ", "Index", "Home", new { @class = "btn btn-primary m-r" })*@
+                        <a href="~/Home/Index" class="btn btn-primary m-r">Về trang chủ</a>
+                    </div>
+
+
+
+                    <div class="col-md-offset-2 col-md-2">
+                        <a  href="~/SignUp/Change"  class="btn btn-success m-l" > Tới chỉnh sửa</a>
+                    </div>
+
+
+                </div>
+            </div>
+        }
+    </form>
 </div>
 
-<p>
-
-    @Html.ActionLink("Trang chủ", "Index")
-</p>

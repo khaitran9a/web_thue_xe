@@ -38,5 +38,7 @@ namespace Do_An_Nhom.Models
         public virtual DbSet<tblUser> tblUsers { get; set; }
         public virtual DbSet<tblXe> tblXes { get; set; }
         public virtual DbSet<tblDoiMatKhau> tblDoiMatKhaus { get; set; }
+        public virtual DbSet<tblContact> tblContacts { get; set; }
+        public virtual DbSet<tblBlog> tblBlogs { get; set; }
     }
 }

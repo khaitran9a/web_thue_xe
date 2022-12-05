@@ -120,6 +120,7 @@
     <NavigationProperty Name="tblXes" Relationship="Self.FK_tblXe_tblUser" FromRole="tblUser" ToRole="tblXe" />
     <NavigationProperty Name="tblDoiMatKhaus" Relationship="QL_THUEXEModel.FK_tblDoiMatKhau_tblUser" FromRole="tblUser" ToRole="tblDoiMatKhau" />
     <Property Name="isActive" Type="Boolean" />
+    <NavigationProperty Name="tblBlogs" Relationship="QL_THUEXEModel.FK_tblBlog_tblUser" FromRole="tblUser" ToRole="tblBlog" />
   </EntityType>
   <EntityType Name="tblXe">
     <Key>
@@ -323,6 +324,12 @@
       <End Role="tblUser" EntitySet="tblUsers" />
       <End Role="tblDoiMatKhau" EntitySet="tblDoiMatKhaus" />
     </AssociationSet>
+    <EntitySet Name="tblContacts" EntityType="QL_THUEXEModel.tblContact" />
+    <EntitySet Name="tblBlogs" EntityType="QL_THUEXEModel.tblBlog" />
+    <AssociationSet Name="FK_tblBlog_tblUser" Association="QL_THUEXEModel.FK_tblBlog_tblUser">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="tblBlog" EntitySet="tblBlogs" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="tblDoiMatKhau">
     <Key>
@@ -342,6 +349,43 @@
         <PropertyRef Name="User_id" />
       </Principal>
       <Dependent Role="tblDoiMatKhau">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblContact">
+    <Key>
+      <PropertyRef Name="ContactId" />
+    </Key>
+    <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isRead" Type="Int32" />
+    <Property Name="CreatDate" Type="DateTime" Precision="3" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblBlog">
+    <Key>
+      <PropertyRef Name="BlogId" />
+    </Key>
+    <Property Name="BlogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_id" Type="Int32" />
+    <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreatDate" Type="DateTime" Precision="3" />
+    <Property Name="SubTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Text1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tblUser" Relationship="QL_THUEXEModel.FK_tblBlog_tblUser" FromRole="tblBlog" ToRole="tblUser" />
+  </EntityType>
+  <Association Name="FK_tblBlog_tblUser">
+    <End Type="QL_THUEXEModel.tblUser" Role="tblUser" Multiplicity="0..1" />
+    <End Type="QL_THUEXEModel.tblBlog" Role="tblBlog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="tblBlog">
         <PropertyRef Name="User_id" />
       </Dependent>
     </ReferentialConstraint>

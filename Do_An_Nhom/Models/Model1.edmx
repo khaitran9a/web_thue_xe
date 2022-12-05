@@ -22,6 +22,30 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="tblBlog">
+          <Key>
+            <PropertyRef Name="BlogId" />
+          </Key>
+          <Property Name="BlogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" />
+          <Property Name="CreatDate" Type="datetime" />
+          <Property Name="SubTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="Text1" Type="nvarchar(max)" />
+          <Property Name="Image1" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblContact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="isRead" Type="int" />
+          <Property Name="CreatDate" Type="datetime" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="tblDoiMatKhau">
           <Key>
             <PropertyRef Name="id" />
@@ -162,6 +186,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblBlog_tblUser">
+          <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+          <End Role="tblBlog" Type="Self.tblBlog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="tblBlog">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblDoiMatKhau_tblUser">
           <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
           <End Role="tblDoiMatKhau" Type="Self.tblDoiMatKhau" Multiplicity="*" />
@@ -273,6 +309,8 @@
         <EntityContainer Name="QL_THUEXEModelStoreContainer">
           <EntitySet Name="LoaiNguoiDung" EntityType="Self.LoaiNguoiDung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBlog" EntityType="Self.tblBlog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblContact" EntityType="Self.tblContact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDoiMatKhau" EntityType="Self.tblDoiMatKhau" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDongXe" EntityType="Self.tblDongXe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblGiaoDich" EntityType="Self.tblGiaoDich" Schema="dbo" store:Type="Tables" />
@@ -291,6 +329,10 @@
           <AssociationSet Name="FK_Table_1_tblPayment" Association="Self.FK_Table_1_tblPayment">
             <End Role="tblPayment" EntitySet="tblPayment" />
             <End Role="tblGiaoDich" EntitySet="tblGiaoDich" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBlog_tblUser" Association="Self.FK_tblBlog_tblUser">
+            <End Role="tblUser" EntitySet="tblUser" />
+            <End Role="tblBlog" EntitySet="tblBlog" />
           </AssociationSet>
           <AssociationSet Name="FK_tblDoiMatKhau_tblUser" Association="Self.FK_tblDoiMatKhau_tblUser">
             <End Role="tblUser" EntitySet="tblUser" />
@@ -453,6 +495,7 @@
           <NavigationProperty Name="tblXes" Relationship="Self.FK_tblXe_tblUser" FromRole="tblUser" ToRole="tblXe" />
           <NavigationProperty Name="tblDoiMatKhaus" Relationship="QL_THUEXEModel.FK_tblDoiMatKhau_tblUser" FromRole="tblUser" ToRole="tblDoiMatKhau" />
           <Property Name="isActive" Type="Boolean" />
+          <NavigationProperty Name="tblBlogs" Relationship="QL_THUEXEModel.FK_tblBlog_tblUser" FromRole="tblUser" ToRole="tblBlog" />
         </EntityType>
         <EntityType Name="tblXe">
           <Key>
@@ -656,7 +699,13 @@
             <End Role="tblUser" EntitySet="tblUsers" />
             <End Role="tblDoiMatKhau" EntitySet="tblDoiMatKhaus" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="tblContacts" EntityType="QL_THUEXEModel.tblContact" />
+          <EntitySet Name="tblBlogs" EntityType="QL_THUEXEModel.tblBlog" />
+          <AssociationSet Name="FK_tblBlog_tblUser" Association="QL_THUEXEModel.FK_tblBlog_tblUser">
+            <End Role="tblUser" EntitySet="tblUsers" />
+            <End Role="tblBlog" EntitySet="tblBlogs" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="tblDoiMatKhau">
           <Key>
             <PropertyRef Name="id" />
@@ -679,7 +728,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="tblContact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isRead" Type="Int32" />
+          <Property Name="CreatDate" Type="DateTime" Precision="3" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblBlog">
+          <Key>
+            <PropertyRef Name="BlogId" />
+          </Key>
+          <Property Name="BlogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CreatDate" Type="DateTime" Precision="3" />
+          <Property Name="SubTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Text1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblUser" Relationship="QL_THUEXEModel.FK_tblBlog_tblUser" FromRole="tblBlog" ToRole="tblUser" />
+        </EntityType>
+        <Association Name="FK_tblBlog_tblUser">
+          <End Type="QL_THUEXEModel.tblUser" Role="tblUser" Multiplicity="0..1" />
+          <End Type="QL_THUEXEModel.tblBlog" Role="tblBlog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUser">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="tblBlog">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -828,6 +914,32 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="User_id" ColumnName="User_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblContacts">
+            <EntityTypeMapping TypeName="QL_THUEXEModel.tblContact">
+              <MappingFragment StoreEntitySet="tblContact">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+                <ScalarProperty Name="isRead" ColumnName="isRead" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBlogs">
+            <EntityTypeMapping TypeName="QL_THUEXEModel.tblBlog">
+              <MappingFragment StoreEntitySet="tblBlog">
+                <ScalarProperty Name="Image1" ColumnName="Image1" />
+                <ScalarProperty Name="Text1" ColumnName="Text1" />
+                <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+                <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="BlogId" ColumnName="BlogId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

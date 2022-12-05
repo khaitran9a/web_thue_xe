@@ -1,0 +1,19 @@
+﻿
+@model IEnumerable<Do_An_Nhom.Models.tblXe>
+@foreach (var item in Model)
+{
+    <div class="col-md-4">
+        <div class="product-item">
+            <img src="~/Content/images/items/@item.Image" alt="">
+
+            <div class="down-content">
+                <h4>@item.Title</h4>
+
+                <h6><small>Giá chỉ từ</small> @item.tblMucPhi.DonGia <small>/ 24h</small></h6>
+
+                <p>@item.Sub.Substring(0, 1) ...</p>
+            </div>
+        </div>
+    </div>
+
+}

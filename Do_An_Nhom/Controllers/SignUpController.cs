@@ -40,7 +40,7 @@ namespace Do_An_Nhom.Controllers
 
         public ActionResult Profile()
         {
-            if (Session["User"] != null)
+            if (Session["Email"] != null)
             {
                 var userid = Int32.Parse(Session["UserID"].ToString());
 
@@ -52,17 +52,6 @@ namespace Do_An_Nhom.Controllers
         }
 
 
-        public ActionResult Change()
-        {
-            if (Session["UserID"] != null)
-            {
-                var userid = Int32.Parse(Session["UserID"].ToString());
-                var x = db.tblUsers.SingleOrDefault(c => c.User_id == userid);
-
-                return View(x);
-            }
-            return RedirectToAction("Login");
-        }
 
         public ActionResult Password()
         {
@@ -123,9 +112,22 @@ namespace Do_An_Nhom.Controllers
             }
         }
 
+
+        public ActionResult Change()
+        {
+            if (Session["UserID"] != null)
+            {
+                var userid = Int32.Parse(Session["UserID"].ToString());
+                var x = db.tblUsers.SingleOrDefault(c => c.User_id == userid);
+
+                return View(x);
+            }
+            return RedirectToAction("Login");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Change(tblUser model, HttpPostedFileBase uploadhinh)
+        public ActionResult Change(tblUser user, HttpPostedFileBase uploadhinh)
         {
             if (ModelState.IsValid)
             {
@@ -133,38 +135,37 @@ namespace Do_An_Nhom.Controllers
                 var _User = db.tblUsers.SingleOrDefault(c => c.User_id == userid);
                 if (_User != null)
                 {
-                    var check = db.tblUsers.FirstOrDefault(c => c.Email == model.Email);
+                    var check = db.tblUsers.FirstOrDefault(c => c.Email == user.Email);
                     if (check != null && check.User_id != userid)
                     {
                         ViewBag.error = "Email đã có người sử dụng";
                         return View();
                     }
 
-                    if (IsEmail(model.Email) == false)
+                    //if (IsEmail(user.Email) == false)
+                    //{
+                    //    ViewBag.error = "Email không đúng định dạng vd: user@gmail.com";
+                    //    return View();
+                    //}
+
+                    _User.Name = user.Name;
+                    _User.Address = user.Address;
+
+                    if (user.Email != null)
                     {
-                        ViewBag.error = "Email không đúng định dạng vd: user@gmail.com";
-                        return View();
+                        _User.Email = user.Email;
                     }
 
-                 
-                    _User.Name = model.Name;
-                    _User.Address = model.Address;
-
-                    if (model.Email != null)
-                    {
-                        _User.Email = model.Email;
-                    }
-
-                    _User.Phone = model.Phone;
-                    //_User.Slug = convertToUnSign2(user.FirstName + model.LastName);
+                    _User.Phone = user.Phone;
+                    _User.Birthday = user.Birthday;
                     db.tblUsers.AddOrUpdate(_User);
                     db.SaveChanges();
+
+
                     if (uploadhinh != null && uploadhinh.ContentLength > 0)
                     {
                         int id = _User.User_id;
-
                         string _FileName = "";
-
                         int index = uploadhinh.FileName.IndexOf('.');
 
                         _FileName = "avatar" + id.ToString() + "." + uploadhinh.FileName.Substring(index + 1);
@@ -172,6 +173,7 @@ namespace Do_An_Nhom.Controllers
                         uploadhinh.SaveAs(_path);
                         _User.avatar = _FileName;
                     }
+
                     db.SaveChanges();
                     return RedirectToAction("Profile");
                 }
@@ -181,11 +183,6 @@ namespace Do_An_Nhom.Controllers
             ViewBag.error = "Thay đổi thất bại";
             return View();
         }
-
-
-
-
-
 
 
 
@@ -236,22 +233,23 @@ namespace Do_An_Nhom.Controllers
                         Date_signup = DateTime.UtcNow,
                         IsAdmin = false,
                         Address = user.Address,
+                        Birthday = user.Birthday,
 
                     };
 
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.tblUsers.Add(_user);
                     db.SaveChanges();
+                   
+
                     if (uploadhinh != null && uploadhinh.ContentLength > 0)
                     {
                         int id = _user.User_id;
-
                         string _FileName = "";
-
                         int index = uploadhinh.FileName.IndexOf('.');
 
                         _FileName = "avatar" + id.ToString() + "." + uploadhinh.FileName.Substring(index + 1);
-                        string _path = Path.Combine(Server.MapPath("~/Content/images/avatars/"), _FileName);
+                        string _path = Path.Combine(Server.MapPath("~/Content/images/avatars"), _FileName);
                         uploadhinh.SaveAs(_path);
                         _user.avatar = _FileName;
                     }

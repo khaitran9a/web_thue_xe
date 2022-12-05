@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Do_An_Nhom.Models.tblBlog>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Quản lý Blog</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Admin/Home">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">Quản lý Blog</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">@Html.ActionLink("Thêm mới", "Create")</h3>
+                        <h3 class="card-title">@*<button id="create" class="btn btn-warning btn-sm">Thêm mới</button>*@</h3>
+                        <div class="card-tools">
+                            @using (Html.BeginForm())
+                            {
+                                <div class="input-group input-group-sm" style="width: 250px;">
+                                    @*<input type="text" name="table_search" class="form-control float-right" placeholder="Tìm kiếm">*@
+                                    @Html.TextBox("searchString", "", htmlAttributes: new { @class = "form-control float-right", @placeholder = "Tìm kiếm" })
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Người viết</th>
+                                    <th>Tiêu đề</th>
+                                    <th>Ngày đăng</th>
+                                    @*<th>Nội dung</th>*@
+                                    <th>Hình ảnh</th>
+                                    <th>Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int i = 1;}
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@i</td>
+
+                                        <td>@Html.DisplayFor(modelItem => item.tblUser.Name)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CreatDate)</td>
+                                        @*<td>@Html.DisplayFor(modelItem => item.SubTitle)</td>*@
+                                        <td><img style="width: 100px" src="~/Content/images/Blogs/@item.Image1" /></td>
+
+                                        <td>
+
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.BlogId }, new { @class = "btn btn-primary btn-sm" })
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.BlogId }, new { @class = "btn btn-danger btn-sm" })
+
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>

@@ -189,7 +189,7 @@
                         <img src="~/Content/images/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">@Session["FullName"]</a>
                     </div>
                 </div>
 
@@ -251,6 +251,16 @@
 
                             </ul>
                         </li>
+
+
+                        <li class="nav-item">
+                            @Html.ActionLink("Quản lý Blog", "Index", "Blog", new { area = "Admin" }, new { @class = "nav-link" })
+                        </li>
+
+
+                        <li class="nav-item">
+                            @Html.ActionLink("Quản lý tài khoản", "Index", "User", new { area = "Admin" }, new { @class = "nav-link" })
+                        </li>
                         <li class="nav-item">
                             <a href="pages/widgets.html" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
@@ -261,11 +271,8 @@
                             </a>
                         </li>
 
-                       
 
-                        <li class="nav-item">
-                            @Html.ActionLink("Quản lý tài khoản", "Index", "User", new { area = "Admin" }, new { @class = "nav-link" })
-                        </li>
+
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">

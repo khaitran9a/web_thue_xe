@@ -1,15 +1,17 @@
 ﻿
+@model PagedList.IPagedList<Do_An_Nhom.Models.tblXe>
+@using PagedList.Mvc;
+
 @{
     ViewBag.Title = "OfferView";
 }
 
 <!-- Page Content -->
-<div class="page-heading about-heading header-text" style="background-image: url(~/Content/images/heading-6-1920x500.jpg);">
+<div class="page-heading about-heading header-text" style="padding-top: 98px;background-image: url(~/Content/images/heading-6-1920x500.jpg);">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="text-content">
-                    <h4>Lorem ipsum dolor sit amet</h4>
                     <h2>Offers</h2>
                 </div>
             </div>
@@ -20,97 +22,10 @@
 <div class="products">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="product-item">
-                    <img src="~/Content/images/offer-1-370x270.jpg" alt="">
-
-                    <div class="down-content">
-                        <h4>Lorem ipsum dolor sit amet.</h4>
-
-                        <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="product-item">
-                    <img src="~/Content/images/offer-2-370x270.jpg" alt="">
-
-                    <div class="down-content">
-                        <h4>Lorem ipsum dolor sit amet.</h4>
-
-                        <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="product-item">
-                    <img src="~/Content/images/offer-3-370x270.jpg" alt="">
-
-                    <div class="down-content">
-                        <h4>Lorem ipsum dolor sit amet.</h4>
-
-                        <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="product-item">
-                    <img src="~/Content/images/offer-4-370x270.jpg" alt="">
-
-                    <div class="down-content">
-                        <h4>Lorem ipsum dolor sit amet.</h4>
-
-                        <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="product-item">
-                    <img src="~/Content/images/offer-5-370x270.jpg" alt="">
-
-                    <div class="down-content">
-                        <h4>Lorem ipsum dolor sit amet.</h4>
-
-                        <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="product-item">
-                    <img src="~/Content/images/offer-6-370x270.jpg" alt="">
-
-                    <div class="down-content">
-                        <h4>Lorem ipsum dolor sit amet.</h4>
-
-                        <h6><small>from</small> $99 <small>per weekend</small></h6>
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, aliquam!</p>
-                    </div>
-                </div>
-            </div>
-
+            @{ Html.RenderAction("OfferCar", "Offer");}
             <div class="col-md-12">
-                <ul class="pages">
-                    <li><a href="#">1</a></li>
-                    <li class="active"><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                <ul class="pages m-auto text-center d-block" style="width: fit-content">
+                    @Html.PagedListPager(Model, page => Url.Action("OfferView", new { page }))
                 </ul>
             </div>
         </div>

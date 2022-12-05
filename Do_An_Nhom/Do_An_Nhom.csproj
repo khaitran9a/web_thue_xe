@@ -136,6 +136,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BlogController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\DongXeController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiDichVuController.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Controllers\XeController.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\FleetController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -172,6 +175,12 @@
     </Compile>
     <Compile Include="Models\modelcs.cs" />
     <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblBlog.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblContact.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblDoiMatKhau.cs">
@@ -2372,6 +2381,16 @@
     <Content Include="Areas\Admin\Views\Xe\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Xe\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Xe\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Blog\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2432,22 +2451,28 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\AboutUs\Index.cshtml" />
     <Content Include="Views\SignUp\Edit.cshtml" />
-    <Content Include="Views\SignUp\Index.cshtml" />
     <Content Include="Views\SignUp\signUp.cshtml" />
     <Content Include="Views\SignUp\Login.cshtml" />
     <Content Include="Views\SignUp\Details.cshtml" />
     <Content Include="Views\SignUp\Password.cshtml" />
     <Content Include="Views\SignUp\Change.cshtml" />
-    <Content Include="Views\SignUp\Profile.cshtml" />
     <Content Include="Views\Shared\_HomeBanner.cshtml" />
     <Content Include="Views\Shared\_HomeOffer.cshtml" />
     <Content Include="Views\Fleet\_FleetCar.cshtml" />
     <Content Include="Views\Fleet\Index.cshtml" />
+    <Content Include="Views\Offer\_OfferCar.cshtml" />
+    <Content Include="Views\Home\_HomeReview.cshtml" />
+    <Content Include="Views\SignUp\ChangeAcc.cshtml" />
+    <Content Include="Views\SignUp\Profile.cshtml" />
+    <Content Include="Views\Home\_HomeBlog.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\_BlogList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Content\images\banner\" />
+    <Folder Include="Content\images\Blogs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

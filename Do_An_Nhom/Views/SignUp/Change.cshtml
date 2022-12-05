@@ -6,8 +6,108 @@
 }
 
 
-
 <style>
+    .frame-change-pass {
+       
+        border: 1px solid #F33F3F;
+        margin:  auto;
+        padding: 30px;
+        background: white;
+        transform: translateY(120px);
+        z-index: 1000;
+    }
+</style>
+
+<div class="frame-change-pass col-8">
+    <form action="" method="post" enctype="multipart/form-data">
+        <h2>Thay đổi thông tin</h2>
+        <hr />
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <h4 style="color:red;">@ViewData["error"]</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group d-flex signup-row">
+                    <div class="col-md-12">
+                        <label class="control-label col-md-5 signup-row-title">Tên đầy đủ</label>
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập vào tên", id = "name" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập vào tên email", name = "email", id = "email" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        <p style="color:red;">@ViewData["error"]</p>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label class="control-label col-md-5 signup-row-title">Số điện thoại</label>
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập vào số điện thoại", id = "phone" } })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group d-flex signup-row">
+
+                    <div class="col-md-6">
+                        <label class="control-label col-md-5 signup-row-title">Địa chỉ</label>
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control signup-input", placeholder = "Nhập địa chỉ", id = "address" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        <label class="control-label col-md-5 signup-row-title">Avatar</label>
+                        <input type="file" id="uploadhinh" name="uploadhinh" accept="image/*" class="" />
+                        @*@Html.EditorFor(model => model.avatar, new { htmlAttributes = new { @class = "signup-input", type = "file", id = "uploadhinh", name = "uploadhinh", accept = "image/*" } })*@
+                        @Html.ValidationMessageFor(model => model.avatar, "", new { @class = "text-danger" })
+                    </div>
+
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control signup-input", Type = "date" } })
+                        @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group d-flex col-10">
+
+                    <div class="col-9 p-0">
+                        @Html.ActionLink("Quay lại", "Index", "Home", new { @class = "btn btn-primary m-r" })
+                    </div>
+
+                    <div class="col-md-offset-2 col-md-3">
+                        <input type="submit" value="Save" class="btn btn-success m-l" />
+                    </div>
+
+
+                </div>
+            </div>
+        }
+    </form>
+</div>
+
+
+
+
+
+@*<style>
     .frame-register {
         width: 1000px;
         margin: 50px auto;
@@ -34,7 +134,7 @@
                 <div class="col-md-6">
 
 
-                 
+
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -96,6 +196,6 @@
         <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
     </svg>
     @Html.ActionLink("Home", "Index")
-</div>
+</div>*@
 
 

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Do_An_Nhom.Models.tblContact>
+
+
+@foreach (var item in Model)
+{
+
+    <div class="service-item">
+        <div class="icon">
+            <i class="fa fa-user"></i>
+        </div>
+        <div class="down-content">
+            <h4>@item.Name</h4>
+            <p class="n-m"><em>@item.Message</em></p>
+        </div>
+    </div>
+
+
+}

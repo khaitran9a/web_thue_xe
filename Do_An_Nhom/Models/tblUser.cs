@@ -20,6 +20,7 @@ namespace Do_An_Nhom.Models
             this.tblHopDongs = new HashSet<tblHopDong>();
             this.tblXes = new HashSet<tblXe>();
             this.tblDoiMatKhaus = new HashSet<tblDoiMatKhau>();
+            this.tblBlogs = new HashSet<tblBlog>();
         }
     
         public int User_id { get; set; }
@@ -43,5 +44,7 @@ namespace Do_An_Nhom.Models
         public virtual ICollection<tblXe> tblXes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblDoiMatKhau> tblDoiMatKhaus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblBlog> tblBlogs { get; set; }
     }
 }

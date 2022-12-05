@@ -15,10 +15,14 @@ namespace Do_An_Nhom.Areas.Admin.Controllers
         private QL_THUEXEEntities db = new QL_THUEXEEntities();
 
         // GET: Admin/User
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var tblUsers = db.tblUsers.Include(t => t.LoaiNguoiDung);
-            return View(tblUsers.ToList());
+            var items = db.tblUsers.ToList();
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                items = items.Where(i => i.Name_login.ToLower().Contains(searchString.ToLower())).ToList();
+            }
+            return View(items);
         }
 
         // GET: Admin/User/Details/5

@@ -29,7 +29,10 @@
         <AssociationConnector Association="QL_THUEXEModel.FK_tblXe_tblUser" ManuallyRouted="false" />
         <EntityTypeShape EntityType="QL_THUEXEModel.tblDoiMatKhau" Width="1.5" PointX="5.25" PointY="9.125" />
         <AssociationConnector Association="QL_THUEXEModel.FK_tblDoiMatKhau_tblUser" />
-      </Diagram>
+        <EntityTypeShape EntityType="QL_THUEXEModel.tblContact" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="QL_THUEXEModel.tblBlog" Width="1.5" PointX="5.25" PointY="19.125" />
+        <AssociationConnector Association="QL_THUEXEModel.FK_tblBlog_tblUser" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

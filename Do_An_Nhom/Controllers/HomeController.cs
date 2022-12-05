@@ -40,5 +40,17 @@ namespace Do_An_Nhom.Controllers
             var items = db.tblXes.Where(i => (bool)i.isActive).Take(3).ToList();
             return PartialView("_HomeOffer", items);
         }
+
+        public ActionResult Review()
+        {
+            var items = db.tblContacts.ToList();
+            return PartialView("_HomeReview", items);
+        }
+
+        public ActionResult HomeBlog()
+        {
+            var items = db.tblBlogs.Take(3).ToList();
+            return PartialView("_HomeBlog", items);
+        }
     }
 }

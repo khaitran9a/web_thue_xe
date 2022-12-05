@@ -7,11 +7,11 @@
             <img src="~/Content/images/items/@item.Image" alt="">
 
             <div class="down-content">
-                <h4>@item.MaXe</h4>
+                <h4>@item.tblDongXe.DongXe</h4>
 
                 <h6><small>Giá chỉ từ: </small> @item.tblMucPhi.DonGia <small>/ 24h</small></h6>
 
-                <p>@if (item.Sub == null) {} else { item.Sub.Substring(0, 60); } ...</p>
+                <p>@item.Sub.Substring(0, 1)...</p>
  
 
 

@@ -37,14 +37,13 @@ namespace Do_An_Nhom.Controllers
 
             var items = db.tblXes.OrderBy(x => x.MaXe).ToList();
 
-            int pageSize = 4;
+            int pageSize = 6;
 
             int pageNumber = (page ?? 1);
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                searchString = searchString.ToLower();
-                items = items.Where(b => b.tblDongXe.DongXe.ToLower().Contains(searchString)).ToList();
+                items = items.Where(i => i.tblDongXe.DongXe.ToLower().Contains(searchString.ToLower())).ToList();
 
             }
 
@@ -52,14 +51,20 @@ namespace Do_An_Nhom.Controllers
         }
 
 
-        public ActionResult FleetCar(string dongXe, int? id, int? page)
+        public ActionResult FleetCar(string searchString, int? id, int? page)
         {
             var items = db.tblXes.Where(i => (bool)i.isActive).ToList();
             if (id != null)
             {
                 items = items.Where(i => i.MaDongXe == id).ToList();
             }
-            int pageSize = 4;
+            int pageSize = 6;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                items = items.Where(i => i.tblDongXe.DongXe.ToLower().Contains(searchString.ToLower())).ToList();
+
+            }
 
             int pageNumber = (page ?? 1);
             return PartialView("_FleetCar", items.ToPagedList(pageNumber, pageSize));
