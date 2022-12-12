@@ -57,7 +57,7 @@
                                     <th>Email</th>
                                     <th>Số điện thoại</th>
                                     <th>Nội dung phản hồi</th>
-                                    
+                                    <th>Trạng thái</th>
                                     <th>Chức năng</th>
                                 </tr>
                             </thead>
@@ -71,7 +71,7 @@
                                         <td>@Html.DisplayFor(modelItem => item.Email)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Phone)</td>
                                         <td> <textarea style="overflow:hidden"> @item.Message </textarea></td>
-
+                                        <td>@Html.DisplayFor(modelItem => item.isActive)</td>
 
                                         <td>
 

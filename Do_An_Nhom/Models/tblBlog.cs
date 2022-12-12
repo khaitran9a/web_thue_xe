@@ -14,6 +14,12 @@ namespace Do_An_Nhom.Models
     
     public partial class tblBlog
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblBlog()
+        {
+            this.tblBlogComments = new HashSet<tblBlogComment>();
+        }
+    
         public int BlogId { get; set; }
         public Nullable<int> User_id { get; set; }
         public string Title { get; set; }
@@ -21,7 +27,10 @@ namespace Do_An_Nhom.Models
         public string SubTitle { get; set; }
         public string Text1 { get; set; }
         public string Image1 { get; set; }
+        public string Alias { get; set; }
     
         public virtual tblUser tblUser { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblBlogComment> tblBlogComments { get; set; }
     }
 }

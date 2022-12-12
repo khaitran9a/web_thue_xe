@@ -4,21 +4,22 @@
 {
     <div class="col-md-4">
         <div class="product-item">
-            <img src="~/Content/images/items/@item.Image" alt="">
+            <img style="min-height: 254px;" src="~/Content/images/items/@item.Image" alt="">
 
             <div class="down-content">
                 <h4>@item.tblDongXe.DongXe</h4>
 
                 <h6><small>Giá chỉ từ: </small> @item.tblMucPhi.DonGia <small>/ 24h</small></h6>
 
-                <p>@item.Sub.Substring(0, 1)...</p>
- 
+                <p>@Do_An_Nhom.Models.Utilities.SplitString(item.Sub, 60)</p>
+               
 
 
-                  <small>
- 
 
-                      <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                <small>
+
+
+                    <strong title="passegengers"><i class="fa fa-user"></i> 5</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                     <strong title="luggages"><i class="fa fa-briefcase"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                     <strong title="doors"><i class="fa fa-sign-out"></i> 4</strong> &nbsp;&nbsp;&nbsp;&nbsp;
                     <strong title="transmission"><i class="fa fa-cog"></i> A</strong>

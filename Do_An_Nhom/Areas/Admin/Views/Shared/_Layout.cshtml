@@ -253,6 +253,31 @@
                         </li>
 
 
+                        <li class="nav-item menu-open">
+
+
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Quản lý giao diện
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index","Banner")" class="nav-link active">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Quản lý Banner</p>
+                                    </a>
+                                </li>
+                          
+
+                            </ul>
+                        </li>
+
+
                         <li class="nav-item">
                             @Html.ActionLink("Quản lý Blog", "Index", "Blog", new { area = "Admin" }, new { @class = "nav-link" })
                         </li>
@@ -260,6 +285,10 @@
 
                         <li class="nav-item">
                             @Html.ActionLink("Quản lý tài khoản", "Index", "User", new { area = "Admin" }, new { @class = "nav-link" })
+                        </li>
+
+                        <li class="nav-item">
+                            @Html.ActionLink("Quản lý Review", "Index", "Contact", new { area = "Admin" }, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
                             <a href="pages/widgets.html" class="nav-link">

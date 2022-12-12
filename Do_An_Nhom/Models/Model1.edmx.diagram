@@ -32,6 +32,10 @@
         <EntityTypeShape EntityType="QL_THUEXEModel.tblContact" Width="1.5" PointX="0.75" PointY="9.75" />
         <EntityTypeShape EntityType="QL_THUEXEModel.tblBlog" Width="1.5" PointX="5.25" PointY="19.125" />
         <AssociationConnector Association="QL_THUEXEModel.FK_tblBlog_tblUser" />
+        <EntityTypeShape EntityType="QL_THUEXEModel.tblBlogComment" Width="1.5" PointX="7.5" PointY="19.625" />
+        <AssociationConnector Association="QL_THUEXEModel.FK_tblBlogComment_tblBlog" />
+        <EntityTypeShape EntityType="QL_THUEXEModel.tblBanner" Width="1.5" PointX="5.25" PointY="23.375" />
+        <AssociationConnector Association="QL_THUEXEModel.FK_tblBanner_tblUser" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

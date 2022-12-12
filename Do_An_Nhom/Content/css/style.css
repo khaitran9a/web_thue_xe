@@ -312,6 +312,7 @@ header .navbar {
 	padding-top: 80px;
 }
 
+
 .banner-item-01 {
 	padding: 300px 0px;
 	background-image: url(../images/slider-image-1-1920x600.jpg);
@@ -826,6 +827,8 @@ footer .inner-content p a {
 .services-item-image { 
 	display: block; 
 }
+
+
 
 .n-m { 
 	margin: 0!important; 

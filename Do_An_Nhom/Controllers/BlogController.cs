@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Net;
+using System.Data.Entity;
+using System.IO;
 
 namespace Do_An_Nhom.Controllers
 {
@@ -44,5 +47,8 @@ namespace Do_An_Nhom.Controllers
             int pageNumber = (page ?? 1);
             return PartialView("_BlogList", items.ToPagedList(pageNumber, pageSize));
         }
+
+    
+
     }
 }

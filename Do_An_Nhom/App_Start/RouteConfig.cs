@@ -19,6 +19,12 @@ namespace Do_An_Nhom
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new[] { "Do_An_Nhom.Controllers" }
             );
+
+            routes.MapRoute(
+                name: "BlogDetail",
+                url: "blogdetail/{alias}-{id}",
+                defaults: new { controller = "BlogDetail", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

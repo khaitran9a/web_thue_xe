@@ -21,5 +21,6 @@ namespace Do_An_Nhom.Models
         public Nullable<int> isRead { get; set; }
         public Nullable<System.DateTime> CreatDate { get; set; }
         public string Phone { get; set; }
+        public Nullable<bool> isActive { get; set; }
     }
 }

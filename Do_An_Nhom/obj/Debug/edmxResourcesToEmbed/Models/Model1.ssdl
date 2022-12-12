@@ -17,6 +17,17 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <EntityType Name="tblBanner">
+    <Key>
+      <PropertyRef Name="BannerId" />
+    </Key>
+    <Property Name="BannerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_id" Type="int" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="SubTitle" Type="nvarchar" MaxLength="250" />
+    <Property Name="Image" Type="varchar" MaxLength="200" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
   <EntityType Name="tblBlog">
     <Key>
       <PropertyRef Name="BlogId" />
@@ -28,6 +39,17 @@
     <Property Name="SubTitle" Type="nvarchar" MaxLength="250" />
     <Property Name="Text1" Type="nvarchar(max)" />
     <Property Name="Image1" Type="varchar" MaxLength="200" />
+    <Property Name="Alias" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblBlogComment">
+    <Key>
+      <PropertyRef Name="CmtId" />
+    </Key>
+    <Property Name="CmtId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BlogId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cmt" Type="nvarchar" MaxLength="250" />
+    <Property Name="CreatDate" Type="datetime" />
   </EntityType>
   <EntityType Name="tblContact">
     <Key>
@@ -40,6 +62,7 @@
     <Property Name="isRead" Type="int" />
     <Property Name="CreatDate" Type="datetime" />
     <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="isActive" Type="bit" />
   </EntityType>
   <EntityType Name="tblDoiMatKhau">
     <Key>
@@ -181,6 +204,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tblBanner_tblUser">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+    <End Role="tblBanner" Type="Self.tblBanner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="tblBanner">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tblBlog_tblUser">
     <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
     <End Role="tblBlog" Type="Self.tblBlog" Multiplicity="*" />
@@ -190,6 +225,18 @@
       </Principal>
       <Dependent Role="tblBlog">
         <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBlogComment_tblBlog">
+    <End Role="tblBlog" Type="Self.tblBlog" Multiplicity="0..1" />
+    <End Role="tblBlogComment" Type="Self.tblBlogComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBlog">
+        <PropertyRef Name="BlogId" />
+      </Principal>
+      <Dependent Role="tblBlogComment">
+        <PropertyRef Name="BlogId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -304,7 +351,9 @@
   <EntityContainer Name="QL_THUEXEModelStoreContainer">
     <EntitySet Name="LoaiNguoiDung" EntityType="Self.LoaiNguoiDung" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBanner" EntityType="Self.tblBanner" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblBlog" EntityType="Self.tblBlog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBlogComment" EntityType="Self.tblBlogComment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblContact" EntityType="Self.tblContact" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblDoiMatKhau" EntityType="Self.tblDoiMatKhau" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblDongXe" EntityType="Self.tblDongXe" Schema="dbo" store:Type="Tables" />
@@ -325,9 +374,17 @@
       <End Role="tblPayment" EntitySet="tblPayment" />
       <End Role="tblGiaoDich" EntitySet="tblGiaoDich" />
     </AssociationSet>
+    <AssociationSet Name="FK_tblBanner_tblUser" Association="Self.FK_tblBanner_tblUser">
+      <End Role="tblUser" EntitySet="tblUser" />
+      <End Role="tblBanner" EntitySet="tblBanner" />
+    </AssociationSet>
     <AssociationSet Name="FK_tblBlog_tblUser" Association="Self.FK_tblBlog_tblUser">
       <End Role="tblUser" EntitySet="tblUser" />
       <End Role="tblBlog" EntitySet="tblBlog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBlogComment_tblBlog" Association="Self.FK_tblBlogComment_tblBlog">
+      <End Role="tblBlog" EntitySet="tblBlog" />
+      <End Role="tblBlogComment" EntitySet="tblBlogComment" />
     </AssociationSet>
     <AssociationSet Name="FK_tblDoiMatKhau_tblUser" Association="Self.FK_tblDoiMatKhau_tblUser">
       <End Role="tblUser" EntitySet="tblUser" />

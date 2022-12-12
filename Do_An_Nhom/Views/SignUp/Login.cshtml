@@ -69,15 +69,16 @@
 </style>
 
 
+<br />
 
-<div class=" bg-white SignUp  col-md-6">
-        @using (Html.BeginForm("Login", "SignUp", FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
+<div class=" bg-white SignUp  col-md-6 mt-5">
+    @using (Html.BeginForm("Login", "SignUp", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
 
     <div class="form-horizontal form-signup">
         <h2>Đăng Nhập</h2>
-        
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -97,18 +98,15 @@
             </div>
         </div>
 
+        <div class="form-group d-flex signup-row pr-5" style="justify-content: right">
+          
+                @Html.ActionLink("Đăng Ký", "signUp", "SignUp", null, new { @class = "btn  btn-danger signup-btn" })
 
-        <div class="form-group d-flex signup-row col-11">
-            @Html.ActionLink("Quay lại", "Index", "Home", null, new { @class = "btn  btn-secondary signup-btn  ml-0" })
-            <div>
-                @Html.ActionLink("Đăng Ký", "signUp", "SignUp", null, new { @class = "btn  btn-info signup-btn" })
-
-                <input type="submit" value="Đăng Nhập" class="btn btn-danger signup-btn mr-0" />
-            </div>
+                <input id="signup" type="submit" name="submit" value="Đăng Nhập" class="btn btn-info signup-btn mr-4" />
+     
         </div>
-    </div>
-        }
-    </div>
 
-
+    </div>
+    }
+</div>
 

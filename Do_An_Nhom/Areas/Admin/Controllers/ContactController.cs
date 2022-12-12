@@ -51,8 +51,10 @@ namespace Do_An_Nhom.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ContactId,Name,Email,Message,isRead,CreatDate,Phone")] tblContact tblContact)
+        public ActionResult Create([Bind(Include = "ContactId,Name,Email,Message,isRead, isActive,CreatDate,Phone")] tblContact tblContact)
         {
+            db.Entry(tblContact).State = EntityState.Modified;
+            db.SaveChanges();
             if (ModelState.IsValid)
             {
                 db.tblContacts.Add(tblContact);
@@ -83,7 +85,7 @@ namespace Do_An_Nhom.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ContactId,Name,Email,Message,isRead,CreatDate,Phone")] tblContact tblContact)
+        public ActionResult Edit([Bind(Include = "ContactId,Name,Email,Message,isRead,CreatDate,Phone,isActive")] tblContact tblContact)
         {
             if (ModelState.IsValid)
             {
@@ -93,6 +95,7 @@ namespace Do_An_Nhom.Areas.Admin.Controllers
             }
             return View(tblContact);
         }
+
 
         // GET: Admin/Contact/Delete/5
         public ActionResult Delete(int? id)

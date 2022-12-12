@@ -31,19 +31,19 @@ namespace Do_An_Nhom.Controllers
 
         public ActionResult Banner()
         {
-            var items = db.tblXes.Where(i => (bool)i.isActive).Take(3).ToList();
+            var items = db.tblBanners.Where(i => (bool)i.isActive).Take(3).ToList();
             return PartialView("_HomeBanner", items);
         }
 
         public ActionResult Offer()
         {
-            var items = db.tblXes.Where(i => (bool)i.isActive).Take(3).ToList();
+            var items = db.tblXes.Where(i => (bool)i.isNew && (bool)i.isActive).Take(3).ToList();
             return PartialView("_HomeOffer", items);
         }
 
         public ActionResult Review()
         {
-            var items = db.tblContacts.ToList();
+            var items = db.tblContacts.Where(i => (bool)i.isActive).ToList();
             return PartialView("_HomeReview", items);
         }
 

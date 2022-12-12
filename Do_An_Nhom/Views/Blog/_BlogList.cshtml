@@ -4,10 +4,13 @@
 {
     <div class="col-md-6">
         <div class="service-item">
-            <a href="blog-details.html" class="services-item-image"><img src="~/Content/images/Blogs/@item.Image1" class="img-fluid" alt=""></a>
+            <a href="~/Blog/Details" class="services-item-image"><img style="min-height: 233px" src="~/Content/images/Blogs/@item.Image1" class="img-fluid" alt=""></a>
 
             <div class="down-content">
-                <h4><a href="blog-details.html">@item.Title</a></h4>
+                <h4>
+                    @*<a href="~/blogdetail/@item.Alias-@item.BlogId">@item.Title</a>*@
+                    @Html.ActionLink(@item.Title, "Index","BlogDetail", new { id = item.BlogId }, new { @class = "" })
+                </h4>
 
                 <p style="margin: 0;"> @item.tblUser.Name &nbsp;&nbsp;|&nbsp;&nbsp; @item.CreatDate.Value.ToString("MM/dd/yyyy  hh:mm") &nbsp;&nbsp;|&nbsp;&nbsp; 114</p>
             </div>

@@ -150,6 +150,7 @@
     <EntitySetMapping Name="tblContacts">
       <EntityTypeMapping TypeName="QL_THUEXEModel.tblContact">
         <MappingFragment StoreEntitySet="tblContact">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
           <ScalarProperty Name="isRead" ColumnName="isRead" />
@@ -163,6 +164,7 @@
     <EntitySetMapping Name="tblBlogs">
       <EntityTypeMapping TypeName="QL_THUEXEModel.tblBlog">
         <MappingFragment StoreEntitySet="tblBlog">
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
           <ScalarProperty Name="Image1" ColumnName="Image1" />
           <ScalarProperty Name="Text1" ColumnName="Text1" />
           <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
@@ -170,6 +172,29 @@
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="User_id" ColumnName="User_id" />
           <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBlogComments">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblBlogComment">
+        <MappingFragment StoreEntitySet="tblBlogComment">
+          <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+          <ScalarProperty Name="Cmt" ColumnName="Cmt" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+          <ScalarProperty Name="CmtId" ColumnName="CmtId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBanners">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblBanner">
+        <MappingFragment StoreEntitySet="tblBanner">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="BannerId" ColumnName="BannerId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
