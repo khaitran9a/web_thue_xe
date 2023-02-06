@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Do_An_Nhom.Models.tblHopDong>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ int j = 0;}
+
+@foreach (var item in Model)
+{
+    j++;
+}
+
+@if (j != 0)
+{
+
+    <div class="container" style="padding-top: 95px !important">
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h2 class="m-0">Quản lý Đơn hàng</h2>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="~/Home">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Đơn hàng của bạn</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+
+                                <h3 class="card-title">@*<button id="create" class="btn btn-warning btn-sm">Thêm mới</button>*@</h3>
+                                <div class="card-tools">
+
+
+
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Tên đây đủ</th>
+                                            <th>Email</th>
+                                            <th>Số điện thoại</th>
+                                            <th>Số ngày thuê</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Chức năng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{ int i = 1;}
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@i</td>
+                                                <td>@Html.DisplayFor(modelItem => item.TenDayDu)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.SoDienThoai)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.SoNgayThue)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.TienDatCoc)</td>
+
+                                                <td>
+
+                                                    @Html.ActionLink("Edit", "Edit", new { id = item.MaXe }, new { @class = "btn btn-primary btn-sm" })
+                                                    @Html.ActionLink("Delete", "Delete", new { id = item.MaXe }, new { @class = "btn btn-danger btn-sm" })
+
+                                                </td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+}
+else
+{
+<div class="container" style="padding-top: 100px">
+    <h2>Bạn chưa có đơn hàng nào</h2>
+
+    <a href="~/Fleet/Index" class="btn btn-primary">Thuê xe ngay</a>
+
+</div>
+
+}

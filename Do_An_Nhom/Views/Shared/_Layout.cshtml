@@ -24,6 +24,21 @@
     <link rel="stylesheet" href="~/Content/css/owl.css">
     <link href="~/Content/css/main.css" rel="stylesheet" />
 
+    <!-- Trang chi tiet xe -->
+    <link href="~/Content/bootstrap4/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="~/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css" rel="stylesheet" />
+    <link href="~/Content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" rel="stylesheet" />
+    <link href="~/Content/plugins/OwlCarousel2-2.2.1/animate.css" rel="stylesheet" />
+    <link href="~/Content/plugins/themify-icons/themify-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+    <link href="~/Content/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" />
+
+    <link href="~/Content/css/single_responsive.css" rel="stylesheet" />
+    <link href="~/Content/css/single_styles.css" rel="stylesheet" />
+
 
 
 </head>
@@ -43,14 +58,17 @@
     <header class="">
         <nav class="navbar navbar-expand-lg nav-page-top">
             <div class="container ">
-                <a class="navbar-brand" href="/Home/Index"><h2>Car  <em>Rental</em></h2></a>
+                <a style="margin-top: 3px !important" class="navbar-brand" href="/Home/Index"><h2>Car  <em>Rental</em></h2></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    @{
-                        Html.RenderPartial("_HeaderNav");
-                    }
+                    <ul class="navbar-nav ml-auto" id="nav-list">
+                        @{ Html.RenderAction("MenuTop", "Home");}
+                        @{
+                            Html.RenderPartial("_HeaderNav");
+                        }
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -80,7 +98,9 @@
     <!-- Additional Scripts -->
     <script src="~/Scripts/js/custom.js"></script>
     <script src="~/Scripts/js/owl.js"></script>
-   
+
     @RenderSection("script", required: false)
+
+    @RenderSection("book", required: false)
 </body>
 </html>

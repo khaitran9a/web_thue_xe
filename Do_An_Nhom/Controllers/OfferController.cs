@@ -14,7 +14,7 @@ namespace Do_An_Nhom.Controllers
         // GET: Offer
 
 
-        public ActionResult OfferView(int? page)
+        public ActionResult Index(int? page)
         {
 
             if (page == null) page = 1;

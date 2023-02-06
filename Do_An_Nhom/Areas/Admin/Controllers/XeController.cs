@@ -55,11 +55,12 @@ namespace Do_An_Nhom.Areas.Admin.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create(tblXe tblXe, HttpPostedFileBase uploadhinh)
         {
             if (ModelState.IsValid)
             {
+                tblXe.NgayDK = DateTime.UtcNow;
                 db.tblXes.Add(tblXe);
                 db.SaveChanges();
               

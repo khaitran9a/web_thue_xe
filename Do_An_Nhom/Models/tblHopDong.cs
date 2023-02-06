@@ -21,13 +21,19 @@ namespace Do_An_Nhom.Models
             this.tblHuys = new HashSet<tblHuy>();
         }
     
-        public string MaHopDong { get; set; }
+        public int MaHopDong { get; set; }
         public Nullable<int> MaXe { get; set; }
         public Nullable<System.DateTime> NgayNhanXe { get; set; }
         public Nullable<System.DateTime> NgayTraXe { get; set; }
         public string GhiChu { get; set; }
         public Nullable<decimal> TienDatCoc { get; set; }
         public Nullable<int> User_id { get; set; }
+        public string TenDayDu { get; set; }
+        public string SoDienThoai { get; set; }
+        public string Email { get; set; }
+        public string NoiThue { get; set; }
+        public string NoiTra { get; set; }
+        public Nullable<int> SoNgayThue { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblGiaoDich> tblGiaoDiches { get; set; }

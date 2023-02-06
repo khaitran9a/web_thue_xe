@@ -73,8 +73,8 @@
     position: absolute;
     z-index: 1;
     padding-left: 0;
-    top: calc(100% + -12px);
-    right: -3px;
+    top: calc(100% + -2px);
+    right: -6px;
     background-color: rgb(51, 51, 51, 0.4);
     border-radius: 2px;
     width: 160px;

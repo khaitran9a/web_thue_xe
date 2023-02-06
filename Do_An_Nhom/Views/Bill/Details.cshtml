@@ -1,0 +1,67 @@
+﻿@model Do_An_Nhom.Models.tblHopDong
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblHopDong</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayNhanXe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayNhanXe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayTraXe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayTraXe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GhiChu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TienDatCoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TienDatCoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblUser.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblUser.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblXe.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblXe.Image)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaHopDong }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

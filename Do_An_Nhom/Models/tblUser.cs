@@ -17,11 +17,11 @@ namespace Do_An_Nhom.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblUser()
         {
+            this.tblBanners = new HashSet<tblBanner>();
+            this.tblBlogs = new HashSet<tblBlog>();
+            this.tblDoiMatKhaus = new HashSet<tblDoiMatKhau>();
             this.tblHopDongs = new HashSet<tblHopDong>();
             this.tblXes = new HashSet<tblXe>();
-            this.tblDoiMatKhaus = new HashSet<tblDoiMatKhau>();
-            this.tblBlogs = new HashSet<tblBlog>();
-            this.tblBanners = new HashSet<tblBanner>();
         }
     
         public int User_id { get; set; }
@@ -40,14 +40,14 @@ namespace Do_An_Nhom.Models
     
         public virtual LoaiNguoiDung LoaiNguoiDung { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblHopDong> tblHopDongs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblXe> tblXes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblDoiMatKhau> tblDoiMatKhaus { get; set; }
+        public virtual ICollection<tblBanner> tblBanners { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblBlog> tblBlogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblBanner> tblBanners { get; set; }
+        public virtual ICollection<tblDoiMatKhau> tblDoiMatKhaus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblHopDong> tblHopDongs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblXe> tblXes { get; set; }
     }
 }

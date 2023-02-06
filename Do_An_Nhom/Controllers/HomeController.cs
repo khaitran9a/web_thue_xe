@@ -22,6 +22,13 @@ namespace Do_An_Nhom.Controllers
             return View();
         }
 
+        public ActionResult MenuTop()
+        {
+            var items = db.tblMenus.Where(i => (bool)i.IsActive).OrderBy(i => i.Positions).ToList();
+            return PartialView("_MenuHome", items);
+        }
+
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -37,8 +44,14 @@ namespace Do_An_Nhom.Controllers
 
         public ActionResult Offer()
         {
-            var items = db.tblXes.Where(i => (bool)i.isNew && (bool)i.isActive).Take(3).ToList();
+            var items = db.tblXes.Where(i => (bool)i.isActive).Take(3).ToList();
             return PartialView("_HomeOffer", items);
+        }
+
+        public ActionResult NewProduct()
+        {
+            var items = db.tblXes.Where(i => (bool)i.isNew && (bool)i.isActive).Take(3).ToList();
+            return PartialView("_NewProduct", items);
         }
 
         public ActionResult Review()

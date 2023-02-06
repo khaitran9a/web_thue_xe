@@ -4,14 +4,15 @@
 {
     <div class="col-md-4">
         <div class="product-item">
-            <img style="min-height: 254px;" src="~/Content/images/items/@item.Image" alt="">
-
+            <a href="~/Product/Index/@item.MaXe">
+                <img style="min-height: 254px;" src="~/Content/images/items/@item.Image" alt="">
+            </a>
             <div class="down-content">
                 <h4>@item.tblDongXe.DongXe</h4>
 
                 <h6><small>Giá chỉ từ: </small> @item.tblMucPhi.DonGia <small>/ 24h</small></h6>
 
-                <p>@Do_An_Nhom.Models.Utilities.SplitString(item.Sub, 60)</p>
+                <p>@Do_An_Nhom.Models.Utilities.SplitString(item.Sub, 30)</p>
                
 
 
@@ -26,7 +27,15 @@
                 </small>
 
                 <span>
-                    <a href="#" data-toggle="modal" data-target="#exampleModal">Book Now</a>
+                    @if (Session["Fullname"] == null)
+                    {
+                        <a href="~/SignUp/Login">Book Now</a>
+                    }
+                    else
+                    {
+                        <a href="#?id=@item.User_id" data-toggle="modal" data-target="#exampleModal">Book Now</a>
+                    }
+
                 </span>
             </div>
         </div>

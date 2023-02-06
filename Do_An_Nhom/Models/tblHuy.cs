@@ -15,7 +15,7 @@ namespace Do_An_Nhom.Models
     public partial class tblHuy
     {
         public int MaHuy { get; set; }
-        public string MaHopDong { get; set; }
+        public Nullable<int> MaHopDong { get; set; }
         public string LyDoHuy { get; set; }
         public Nullable<System.DateTime> ThoiGianHuy { get; set; }
     

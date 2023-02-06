@@ -18,5 +18,6 @@ namespace Do_An_Nhom.Models
         public string Title { get; set; }
         public string Alias { get; set; }
         public Nullable<bool> IsActive { get; set; }
+        public Nullable<int> Positions { get; set; }
     }
 }

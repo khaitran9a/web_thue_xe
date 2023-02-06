@@ -20,6 +20,67 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tblBanners">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblBanner">
+        <MappingFragment StoreEntitySet="tblBanner">
+          <ScalarProperty Name="BannerId" ColumnName="BannerId" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBlogs">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblBlog">
+        <MappingFragment StoreEntitySet="tblBlog">
+          <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+          <ScalarProperty Name="Text1" ColumnName="Text1" />
+          <ScalarProperty Name="Image1" ColumnName="Image1" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBlogComments">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblBlogComment">
+        <MappingFragment StoreEntitySet="tblBlogComment">
+          <ScalarProperty Name="CmtId" ColumnName="CmtId" />
+          <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Cmt" ColumnName="Cmt" />
+          <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblContacts">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblContact">
+        <MappingFragment StoreEntitySet="tblContact">
+          <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="isRead" ColumnName="isRead" />
+          <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDoiMatKhaus">
+      <EntityTypeMapping TypeName="QL_THUEXEModel.tblDoiMatKhau">
+        <MappingFragment StoreEntitySet="tblDoiMatKhau">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="rePassword" ColumnName="rePassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tblDongXes">
       <EntityTypeMapping TypeName="QL_THUEXEModel.tblDongXe">
         <MappingFragment StoreEntitySet="tblDongXe">
@@ -43,6 +104,7 @@
     <EntitySetMapping Name="tblHopDongs">
       <EntityTypeMapping TypeName="QL_THUEXEModel.tblHopDong">
         <MappingFragment StoreEntitySet="tblHopDong">
+          <ScalarProperty Name="SoNgayThue" ColumnName="SoNgayThue" />
           <ScalarProperty Name="MaHopDong" ColumnName="MaHopDong" />
           <ScalarProperty Name="MaXe" ColumnName="MaXe" />
           <ScalarProperty Name="NgayNhanXe" ColumnName="NgayNhanXe" />
@@ -50,6 +112,11 @@
           <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
           <ScalarProperty Name="TienDatCoc" ColumnName="TienDatCoc" />
           <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="TenDayDu" ColumnName="TenDayDu" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="NoiThue" ColumnName="NoiThue" />
+          <ScalarProperty Name="NoiTra" ColumnName="NoiTra" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -78,6 +145,7 @@
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="Alias" ColumnName="Alias" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Positions" ColumnName="Positions" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -101,7 +169,6 @@
     <EntitySetMapping Name="tblUsers">
       <EntityTypeMapping TypeName="QL_THUEXEModel.tblUser">
         <MappingFragment StoreEntitySet="tblUser">
-          <ScalarProperty Name="isActive" ColumnName="isActive" />
           <ScalarProperty Name="User_id" ColumnName="User_id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Name_login" ColumnName="Name_login" />
@@ -114,16 +181,14 @@
           <ScalarProperty Name="Date_signup" ColumnName="Date_signup" />
           <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
           <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblXes">
       <EntityTypeMapping TypeName="QL_THUEXEModel.tblXe">
         <MappingFragment StoreEntitySet="tblXe">
-          <ScalarProperty Name="Sub" ColumnName="Sub" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="isActive" ColumnName="isActive" />
-          <ScalarProperty Name="isNew" ColumnName="isNew" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="MaXe" ColumnName="MaXe" />
           <ScalarProperty Name="User_id" ColumnName="User_id" />
           <ScalarProperty Name="MaMP" ColumnName="MaMP" />
@@ -134,67 +199,10 @@
           <ScalarProperty Name="Rate" ColumnName="Rate" />
           <ScalarProperty Name="LuotThue" ColumnName="LuotThue" />
           <ScalarProperty Name="Image" ColumnName="Image" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblDoiMatKhaus">
-      <EntityTypeMapping TypeName="QL_THUEXEModel.tblDoiMatKhau">
-        <MappingFragment StoreEntitySet="tblDoiMatKhau">
-          <ScalarProperty Name="rePassword" ColumnName="rePassword" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="User_id" ColumnName="User_id" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblContacts">
-      <EntityTypeMapping TypeName="QL_THUEXEModel.tblContact">
-        <MappingFragment StoreEntitySet="tblContact">
+          <ScalarProperty Name="isNew" ColumnName="isNew" />
           <ScalarProperty Name="isActive" ColumnName="isActive" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
-          <ScalarProperty Name="isRead" ColumnName="isRead" />
-          <ScalarProperty Name="Message" ColumnName="Message" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ContactId" ColumnName="ContactId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblBlogs">
-      <EntityTypeMapping TypeName="QL_THUEXEModel.tblBlog">
-        <MappingFragment StoreEntitySet="tblBlog">
-          <ScalarProperty Name="Alias" ColumnName="Alias" />
-          <ScalarProperty Name="Image1" ColumnName="Image1" />
-          <ScalarProperty Name="Text1" ColumnName="Text1" />
-          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
-          <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
           <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="User_id" ColumnName="User_id" />
-          <ScalarProperty Name="BlogId" ColumnName="BlogId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblBlogComments">
-      <EntityTypeMapping TypeName="QL_THUEXEModel.tblBlogComment">
-        <MappingFragment StoreEntitySet="tblBlogComment">
-          <ScalarProperty Name="CreatDate" ColumnName="CreatDate" />
-          <ScalarProperty Name="Cmt" ColumnName="Cmt" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="BlogId" ColumnName="BlogId" />
-          <ScalarProperty Name="CmtId" ColumnName="CmtId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tblBanners">
-      <EntityTypeMapping TypeName="QL_THUEXEModel.tblBanner">
-        <MappingFragment StoreEntitySet="tblBanner">
-          <ScalarProperty Name="isActive" ColumnName="isActive" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="User_id" ColumnName="User_id" />
-          <ScalarProperty Name="BannerId" ColumnName="BannerId" />
+          <ScalarProperty Name="Sub" ColumnName="Sub" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

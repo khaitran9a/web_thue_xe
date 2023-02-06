@@ -34,6 +34,7 @@ namespace Do_An_Nhom.Models
         public Nullable<bool> isActive { get; set; }
         public string Title { get; set; }
         public string Sub { get; set; }
+        public string Description { get; set; }
     
         public virtual tblDongXe tblDongXe { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

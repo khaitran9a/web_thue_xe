@@ -1,0 +1,8 @@
+﻿
+@model IEnumerable<Do_An_Nhom.Models.tblMenu>
+
+@foreach (var item in Model)
+{
+    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="~/@item.Alias">@item.Title</a></li>
+}
+

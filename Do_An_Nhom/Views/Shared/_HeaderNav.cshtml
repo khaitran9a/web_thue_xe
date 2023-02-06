@@ -7,35 +7,13 @@
 
 
 
-<ul class="navbar-nav ml-auto" id="nav-list">
-    <li class="nav-item ">
-        <a class="nav-link js-scroll-trigger active" href="~/Home/Index"> Home </a>
-        @*@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link js-scroll-trigger active" })*@
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="~/Fleet/Index"> Fleet </a>
-        @*@Html.ActionLink("Fleet", "Index", "Fleet", null, new { @class = "nav-link js-scroll-trigger" })*@
-    </li>
-    <li class="nav-item">
-        @Html.ActionLink("Offer", "OfferView", "Offer", null, new { @class = "nav-link js-scroll-trigger" })
-    </li>
-
-
-
-
-    <li class="nav-item"><a class="nav-link" href="~/AboutUs/Index">About Us</a></li>
-
-    <li class="nav-item">
-        @Html.ActionLink("Contact Us", "Index", "Contact", null, new { @class = "nav-link js-scroll-trigger" })
-    </li>
 
 
     @*<li class="nav-item">
             @Html.ActionLink("Đăng Ký", "signUp", "SignUp", null, new { @class = "nav-link" })
         </li>*@
 
-    <li class="nav-item dropdown">
+    @*<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
 
         <div class="dropdown-menu">
@@ -44,10 +22,7 @@
             <a class="dropdown-item" href="testimonials.html">Testimonials</a>
             <a class="dropdown-item" href="terms.html">Terms</a>
         </div>
-    </li>
-
-
-
+    </li>*@
 
     @if (Session["Fullname"] != null)
     {
@@ -69,7 +44,7 @@
                     @Html.ActionLink("Đổi mật khẩu", "Password", "SignUp")
                 </li>
                 <li class="header__navbar-user-item">
-                    <a href="">Đơn mua</a>
+                    <a href="~/Bill/Index">Đơn mua</a>
                 </li>
                 <li class="header__navbar-user-item header__navbar-user-item--separate">
                     @Html.ActionLink("Đăng xuất", "LogOut", "SignUp", null, new { @class = "" })

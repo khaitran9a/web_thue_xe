@@ -1,5 +1,4 @@
-﻿
-@model Do_An_Nhom.Models.tblBlog
+﻿@model Do_An_Nhom.Models.tblBlog
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -33,65 +32,36 @@
         </div>
     </div>
 </div>
-
 <div class="products">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="section-heading">
-                    <h2>Lorem ipsum dolor sit amet, consectetur.</h2>
+                    <h2>@Model.SubTitle</h2>
                 </div>
             </div>
-
             <div class="col-md-8">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, sed. Ex, id autem cum assumenda, quisquam cupiditate amet dolorem atque ipsam pariatur sequi voluptatem est nesciunt eum, aspernatur, tenetur rem. <br>
-
-                    <br>
-
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, consequatur, magnam. Dolorum vitae a vel quisquam. Fuga quia suscipit id veritatis sint earum impedit corporis quidem eum consectetur ipsam ex sequi ad, distinctio enim tenetur eveniet eligendi. Laborum, sapiente, magnam.
-                </p>
-
-                <br>
-
-                <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, modi.</h5>
-
-                <br>
-
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam officia in adipisci. Corporis rem beatae cupiditate neque consequuntur necessitatibus expedita laudantium temporibus quam ex quidem, aut non blanditiis soluta deserunt dolores mollitia repudiandae voluptatibus perspiciatis dolor quos distinctio! Atque, magnam. <br>
-
-                    <br>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt dolore ducimus, ad itaque reprehenderit repellat dignissimos, qui velit dolores voluptas.
-                </p>
+                @Html.Raw(Model.Text1)
             </div>
-
             <div class="col-md-4">
                 <div class="left-content">
-                    <h4>Lorem ipsum dolor sit amet.</h4>
-
+                    <h4>Những tin liên quan</h4>
                     <br>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur.<br><br>Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti.</p>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, minus?</p>
+                    <p>Tin 1</p>
+                    <p>Tin 2</p>
                 </div>
             </div>
         </div>
-
         <br>
-
         <div>
             <img src="~/Content/images/blog-image-fullscren-1-1920x700.jpg" class="img-fluid" alt="">
         </div>
     </div>
 </div>
-
 <!--Message Start-->
 <link rel="stylesheet" type="text/css" href="~/Content/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="~/Content/styles/contact_styles.css">
 <link rel="stylesheet" type="text/css" href="~/Content/styles/contact_responsive.css">
-
 <div class="send-message">
     <div class="container">
         <div class="row">
@@ -109,7 +79,7 @@
                                     <input name="name" type="text" class="form-control" id="name" placeholder="Full Name" required="">
                                 </fieldset>
                             </div>
-                           
+
                             <div class="col-lg-12">
                                 <fieldset>
                                     <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your Message" required=""></textarea>
@@ -124,14 +94,10 @@
                     </form>
                 </div>
             </div>
-
             <div class="col-md-4">
                 <div class="left-content">
-
                     <p>Lorem ipsum dolor sit amet, consectetur adipisic elit. Sed voluptate nihil eumester consectetur similiqu consectetur. Lorem ipsum dolor sit amet, consectetur adipisic elit. Et, consequuntur, modi mollitia corporis ipsa voluptate corrupti.</p>
-
                     <br>
-
                     <ul class="social-icons">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -143,35 +109,27 @@
         </div>
     </div>
 </div>
-
-
-
-
 @section script{
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
     <script src="~/Content/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     <script src="~/Content/js/contact_custom.js"></script>
-
     <script>
         function isEmail($email) {
             var regex = /^([\w-\.]+([\w-]+\.)+[\w-]{2,4})?$/;
-
             return regex.test($email);
         }
-
         $(document).ready(function () {
             $("#form_submit").click(function () {
                 _name = $("#name").val();
                 _message = $("#message").val();
-
                 error1 = $("#error1");
                 if ($("#input_name").val() == "") {
                     error1.html("Vui lòng nhập vào tên!");
                     //alert("Chưa nhập tên khách hàng");
                     return;
                 }
-      
- 
+
+
                 else {
                     $.ajax({
                         type: "POST",
@@ -185,10 +143,9 @@
                                 alert("Bình luận của bạn chưa được gửi đi!");
                             }
                         }
-                    });  }
-
+                    });
+                }
             });
         })
-
     </script>
-    }
+}

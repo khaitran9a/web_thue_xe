@@ -15,7 +15,7 @@ namespace Do_An_Nhom.Models
     public partial class tblGiaoDich
     {
         public string MaGD { get; set; }
-        public string MaHopDong { get; set; }
+        public Nullable<int> MaHopDong { get; set; }
         public string MaPayment { get; set; }
         public string TrangThai { get; set; }
     

@@ -52,8 +52,8 @@ namespace Do_An_Nhom.Areas.Admin.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BlogId,Title,CreatDate,SubTitle,Text1,Image1,User_id")] tblBlog tblBlog, HttpPostedFileBase uploadhinh)
+        [ValidateInput(false)]
+        public ActionResult Create(tblBlog tblBlog, HttpPostedFileBase uploadhinh)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace Do_An_Nhom.Areas.Admin.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "BlogId,Title,CreatDate,SubTitle,Text1,Image1,User_id")] tblBlog tblBlog, HttpPostedFileBase uploadhinh)
         {
             if (ModelState.IsValid)

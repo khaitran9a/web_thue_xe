@@ -7,9 +7,10 @@
     {
         <div class="col-md-4">
             <div class="product-item">
-                <a href="~/Offer/OfferView"><img src="~/Content/images/@item.Image" alt=""></a>
+                <a href="/Product/Index/@item.MaXe"><img style="width: 348px; height: 254px" src="~/Content/images/items/@item.Image" alt="" id = @item.MaXe></a>
                 <div class="down-content">
-                    <a href="~/Offer/OfferView"><h4>@item.Title</h4></a>
+                    @Html.ActionLink(@item.Title, "Index", "Product", new { id = item.MaXe }, new { @class = "" })
+                    @*<a href="/Product/Index" id=@item.MaXe><h4>@item.Title</h4></a>*@
                     <h6><small>Giá chỉ từ</small> @item.tblMucPhi.DonGia <small>/ 24h</small></h6>
                     <p>@item.Sub</p>
                 </div>

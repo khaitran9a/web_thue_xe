@@ -37,7 +37,7 @@
     <Property Name="Title" Type="nvarchar" MaxLength="250" />
     <Property Name="CreatDate" Type="datetime" />
     <Property Name="SubTitle" Type="nvarchar" MaxLength="250" />
-    <Property Name="Text1" Type="nvarchar(max)" />
+    <Property Name="Text1" Type="text" />
     <Property Name="Image1" Type="varchar" MaxLength="200" />
     <Property Name="Alias" Type="varchar" MaxLength="50" />
   </EntityType>
@@ -87,7 +87,7 @@
       <PropertyRef Name="MaGD" />
     </Key>
     <Property Name="MaGD" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="MaHopDong" Type="char" MaxLength="10" />
+    <Property Name="MaHopDong" Type="int" />
     <Property Name="MaPayment" Type="char" MaxLength="10" />
     <Property Name="TrangThai" Type="nvarchar" MaxLength="20" />
   </EntityType>
@@ -95,20 +95,26 @@
     <Key>
       <PropertyRef Name="MaHopDong" />
     </Key>
-    <Property Name="MaHopDong" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="MaHopDong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaXe" Type="int" />
     <Property Name="NgayNhanXe" Type="datetime" />
     <Property Name="NgayTraXe" Type="date" />
     <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
     <Property Name="TienDatCoc" Type="decimal" Precision="18" Scale="0" />
     <Property Name="User_id" Type="int" />
+    <Property Name="TenDayDu" Type="nvarchar" MaxLength="50" />
+    <Property Name="SoDienThoai" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="NoiThue" Type="nvarchar" MaxLength="150" />
+    <Property Name="NoiTra" Type="nvarchar" MaxLength="150" />
+    <Property Name="SoNgayThue" Type="int" />
   </EntityType>
   <EntityType Name="tblHuy">
     <Key>
       <PropertyRef Name="MaHuy" />
     </Key>
     <Property Name="MaHuy" Type="int" Nullable="false" />
-    <Property Name="MaHopDong" Type="char" MaxLength="10" />
+    <Property Name="MaHopDong" Type="int" />
     <Property Name="LyDoHuy" Type="nvarchar" MaxLength="50" />
     <Property Name="ThoiGianHuy" Type="date" />
   </EntityType>
@@ -127,6 +133,7 @@
     <Property Name="Title" Type="nvarchar" MaxLength="50" />
     <Property Name="Alias" Type="nvarchar" MaxLength="50" />
     <Property Name="IsActive" Type="bit" />
+    <Property Name="Positions" Type="int" />
   </EntityType>
   <EntityType Name="tblMucPhi">
     <Key>
@@ -179,6 +186,7 @@
     <Property Name="isActive" Type="bit" />
     <Property Name="Title" Type="nvarchar" MaxLength="100" />
     <Property Name="Sub" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar(max)" />
   </EntityType>
   <Association Name="FK_Table_1_tblHopDong">
     <End Role="tblHopDong" Type="Self.tblHopDong" Multiplicity="0..1" />
