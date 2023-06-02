@@ -78,7 +78,7 @@ namespace Do_An_Nhom.Controllers
         }
 
         // GET: Bill/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
